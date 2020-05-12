@@ -5,6 +5,7 @@ set -euxo pipefail
 PWD==$(pwd)
 
 AYA() {
+	mkdir -p ~/.aryacoin
 	if [ ! -f ~/.aryacoin/aryacoin.conf ]; then
 		cat <<-EOF >~/.aryacoin/aryacoin.conf
 			server=1
