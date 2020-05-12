@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-SCRIPT_DIR==$(pwd)
+SCRIPT_DIR=$(pwd)
 
 AYA() {
 	mkdir -p ~/.aryacoin
