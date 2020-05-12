@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-PWD==$(pwd)
+SCRIPT_DIR==$(pwd)
 
 AYA() {
 	mkdir -p ~/.aryacoin
@@ -23,10 +23,10 @@ AYA() {
 	if [ -d AYAv2 ]; then
 		cd AYAv2
 		git checkout master
-		cd $PWD
+		cd $SCRIPT_DIR
 	else
 		git clone https://github.com/sillyghost/AYAv2.git -b master --single-branch
-		cd $PWD
+		cd $SCRIPT_DIR
 	fi
 
 	cp ./build/aya.sh ~/AYAv2/build.sh
