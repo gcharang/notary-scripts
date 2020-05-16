@@ -149,15 +149,13 @@ CHIPS() {
 	if [ -d chips3 ]; then
 		cd chips3
 		git checkout dev
-		git pull
 	else
 		git clone https://github.com/jl777/chips3 -b dev --single-branch
-		cd chips3
 	fi
-	./build.sh -j$(nproc)
-	echo "Done building Chips!"
-	sudo ln -sf /home/$USER/chips3/src/chips-cli /usr/local/bin/chips-cli
-	sudo ln -sf /home/$USER/chips3/src/chipsd /usr/local/bin/chipsd
+	cd $SCRIPT_DIR
+	cp ./build/chips.sh ~/chips3/build_chips.sh
+	cd ~/chips3
+	./build_chips.sh
 }
 
 GAME() {
