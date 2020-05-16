@@ -1,5 +1,5 @@
 #!/bin/bash
-# AYA build script for Ubuntu & Debian 9 v.3 (c) Decker (and webworker)
+# EMC2 build script for Ubuntu & Debian 9 v.3 (c) Decker (and webworker)
 # Modified for Debian 10 by gcharang
 
 set -euxo pipefail
@@ -7,9 +7,9 @@ set -euxo pipefail
 #set -e
 
 berkeleydb() {
-    AYA_ROOT=$(pwd)
-    AYA_PREFIX="${AYA_ROOT}/db4"
-    mkdir -p $AYA_PREFIX
+    EMC2_ROOT=$(pwd)
+    EMC2_PREFIX="${EMC2_ROOT}/db4"
+    mkdir -p $EMC2_PREFIX
     wget -N 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
     echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef db-4.8.30.NC.tar.gz' | sha256sum -c
     tar -xzvf db-4.8.30.NC.tar.gz
@@ -21,19 +21,20 @@ berkeleydb() {
         fi
     fi
     cd db-4.8.30.NC/build_unix/
-    ../dist/configure -enable-cxx -disable-shared -with-pic -prefix=$AYA_PREFIX
+    ../dist/configure -enable-cxx -disable-shared -with-pic -prefix=$EMC2_PREFIX
     make install
-    cd $AYA_ROOT
+    cd $EMC2_ROOT
 }
-buildAYA() {
+
+buildEMC2() {
     git pull
     make clean
     ./autogen.sh
-    ./configure LDFLAGS="-L${AYA_PREFIX}/lib/" CPPFLAGS="-I${AYA_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared --with-incompatible-bdb
+    ./configure LDFLAGS="-L${EMC2_PREFIX}/lib/" CPPFLAGS="-I${EMC2_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)
 }
 berkeleydb
-buildAYA
-echo "Done building AYA!"
-sudo ln -sf /home/$USER/AYAv2/src/aryacoin-cli /usr/local/bin/aryacoin-cli
-sudo ln -sf /home/$USER/AYAv2/src/aryacoind /usr/local/bin/aryacoind
+buildEMC2
+echo "Done building EMC2!"
+sudo ln -sf /home/$USER/einsteinium/src/einsteinium-cli /usr/local/bin/einsteinium-cli
+sudo ln -sf /home/$USER/einsteinium/src/einsteiniumd /usr/local/bin/einsteiniumd
