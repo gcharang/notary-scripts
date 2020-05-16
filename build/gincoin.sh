@@ -28,7 +28,6 @@ berkeleydb() {
 
 buildGIN() {
     git pull
-    make clean
     ./autogen.sh
     ./configure LDFLAGS="-L${GIN_PREFIX}/lib/" CPPFLAGS="-I${GIN_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared --without-gui
     make -j$(nproc)
