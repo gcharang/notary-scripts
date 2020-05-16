@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -euxo pipefail
+# https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+#set -e
 
 source config
 
@@ -150,7 +152,7 @@ CHIPS() {
 		git pull
 	else
 		git clone https://github.com/jl777/chips3 -b dev --single-branch
-		cd chips
+		cd chips3
 	fi
 	./build.sh -j$(nproc)
 	echo "Done building Chips!"
