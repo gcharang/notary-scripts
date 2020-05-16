@@ -51,7 +51,6 @@ OpenSSL() {
 }
 buildGAME() {
     git pull
-    make clean
     ./autogen.sh
     ./configure --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)
