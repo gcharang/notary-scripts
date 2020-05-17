@@ -33,7 +33,7 @@ IGUANA() {
 		git pull
 		cd iguana
 	else
-		git clone https://github.com/KomodoPlatform/dPoW -b master --single-branch
+		git clone https://github.com/KomodoPlatform/dPoW -b master
 		cd dPoW/iguana
 	fi
 
@@ -69,7 +69,7 @@ KOMODO() {
 		git checkout master
 		git pull
 	else
-		git clone https://github.com/KomodoPlatform/komodo -b master --single-branch
+		git clone https://github.com/KomodoPlatform/komodo -b master
 		cd komodo
 	fi
 	./zcutil/fetch-params.sh
@@ -99,7 +99,7 @@ AYA() {
 		cd AYAv2
 		git checkout master
 	else
-		git clone https://github.com/sillyghost/AYAv2.git -b master --single-branch
+		git clone https://github.com/sillyghost/AYAv2.git -b master
 
 	fi
 	cd $SCRIPT_DIR
@@ -115,7 +115,7 @@ HUSH() {
 		git checkout v3.3.1
 		git pull
 	else
-		git clone https://github.com/myhush/hush3 --branch v3.3.1 --single-branch hush3
+		git clone https://github.com/myhush/hush3 --b v3.3.1
 		cd hush3
 	fi
 	./zcutil/build.sh -j$(nproc)
@@ -150,7 +150,7 @@ CHIPS() {
 		cd chips3
 		git checkout dev
 	else
-		git clone https://github.com/jl777/chips3 -b dev --single-branch
+		git clone https://github.com/jl777/chips3 -b dev
 	fi
 	cd $SCRIPT_DIR
 	cp ./build/chips.sh ~/chips3/build_chips.sh
@@ -178,7 +178,7 @@ GAME() {
 		cd GameCredits
 		git checkout master
 	else
-		git clone https://github.com/gamecredits-project/GameCredits -b master --single-branch
+		git clone https://github.com/gamecredits-project/GameCredits -b master
 	fi
 	cd $SCRIPT_DIR
 	cp ./build/gamecredits.sh ~/GameCredits/build.sh
@@ -206,7 +206,7 @@ EMC2() {
 		cd einsteinium
 		git checkout master
 	else
-		git clone https://github.com/emc2foundation/einsteinium -b master --single-branch
+		git clone https://github.com/emc2foundation/einsteinium -b master
 	fi
 	cd $SCRIPT_DIR
 	cp ./build/einsteinium.sh ~/einsteinium/build.sh
@@ -234,7 +234,7 @@ GIN() {
 		cd gincoin-core
 		git checkout master
 	else
-		git clone https://github.com/GIN-coin/gincoin-core -b master --single-branch
+		git clone https://github.com/GIN-coin/gincoin-core -b master
 	fi
 	cd $SCRIPT_DIR
 	cp ./build/gincoin.sh ~/gincoin-core/build.sh
