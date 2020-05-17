@@ -17,6 +17,7 @@ berkeleydb() {
         DEBIAN_VERSION=$(cat /etc/debian_version)
         DEBIAN_VERSION=${DEBIAN_VERSION%.*}
         if [ "$DEBIAN_VERSION" -eq 10 ]; then
+            #https://www.fsanmartin.co/compiling-berkeley-db-4-8-30-in-ubuntu-19/
             sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' db-4.8.30.NC/dbinc/atomic.h
         fi
     fi
