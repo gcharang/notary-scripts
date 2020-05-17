@@ -158,46 +158,11 @@ $bitcoinECDSA->setPrivateKey($k);
 echo "             Passphrase: '" . $passphrase . "'" . PHP_EOL;
 echo PHP_EOL;
 
+
+
+
 foreach ($coins as $coin) {
-
-if (is_array($coin["PUBKEY_ADDRESS"])) {
-      $NetworkPrefix = bin2hex(implode("",array_map("chr", $coin["PUBKEY_ADDRESS"])));
-      $bitcoinECDSA->setNetworkPrefix($NetworkPrefix);
-} else
-      $bitcoinECDSA->setNetworkPrefix(sprintf("%02X", $coin["PUBKEY_ADDRESS"])); 
-
-// Returns the compressed public key. The compressed PubKey starts with 0x02 if it's y coordinate is even and 0x03 if it's odd, the next 32 bytes corresponds to the x coordinates.
-$NetworkPrefix = $bitcoinECDSA->getNetworkPrefix();
-
-echo "\x1B[01;37m[\x1B[01;32m "  . $coin["name"] . " \x1B[01;37m]\x1B[0m" . PHP_EOL;
-echo "         Network Prefix: " . $NetworkPrefix . PHP_EOL;
-echo "  Compressed Public Key: " . $bitcoinECDSA->getPubKey() . PHP_EOL;
-echo "Uncompressed Public Key: " . $bitcoinECDSA->getUncompressedPubKey() . PHP_EOL;
-echo "            Private Key: " . $bitcoinECDSA->getPrivateKey() . PHP_EOL;
-echo "         Compressed WIF: " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL;
-echo "       Uncompressed WIF: " . $bitcoinECDSA->getWIF(false, $coin["SECRET_KEY"]) . PHP_EOL;
-
-$address = $bitcoinECDSA->getAddress(); //compressed Bitcoin address
-echo "  Compressed Address: " . sprintf("%34s",$address) . PHP_EOL;
-$address = $bitcoinECDSA->getUncompressedAddress();
-echo "Uncompressed Address: " . sprintf("%34s",$address) . PHP_EOL;
+echo $coin["cli"] . " importprivkey " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL;
+$out = shell_exec($coin["cli"] . " importprivkey " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL);
+echo($coin["cli"] . " : " . $out . PHP_EOL);
 }
-
-/* ETH/ERC20 */
-
-// https://ethereum.stackexchange.com/questions/3542/how-are-ethereum-addresses-generated
-// https://www.npmjs.com/package/node-eth-address
-// https://theethereum.wiki/w/index.php/Accounts,_Addresses,_Public_And_Private_Keys,_And_Tokens
-// https://ethereum.stackexchange.com/questions/3720/how-do-i-get-the-raw-private-key-from-my-mist-keystore-file
-// https://ethereum.stackexchange.com/questions/12830/how-to-get-private-key-from-account-address-and-password
-// https://github.com/ethereum/EIPs/issues/55#issuecomment-187159063
-// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md
-
-echo "\x1B[01;37m[\x1B[01;32m "  . "ETH/ERC20" . " \x1B[01;37m]\x1B[0m" . PHP_EOL;
-$kec = new Keccak256();
-$bitcoinECDSA->setPrivateKey($k);
-$pubkey = substr($bitcoinECDSA->getUncompressedPubKey(),2);
-
-$address = substr($kec->hash(pack("H*",$pubkey), 256), -40);
-echo "   ETH/ERC20 Address: 0x" . EIP55_2($address) . PHP_EOL;
-?>
