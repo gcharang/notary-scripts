@@ -1,5 +1,16 @@
 <?php
 
+function errHandle($errNo, $errStr, $errFile, $errLine) {
+    $msg = "$errStr in $errFile on line $errLine";
+    if ($errNo == E_NOTICE || $errNo == E_WARNING) {
+        throw new ErrorException($msg, $errNo);
+    } else {
+        echo $msg;
+    }
+}
+
+set_error_handler('errHandle');
+
 // https://github.com/BitcoinPHP/BitcoinECDSA.php
 require_once 'BitcoinECDSA.php/src/BitcoinPHP/BitcoinECDSA/BitcoinECDSA.php';
 use BitcoinPHP\BitcoinECDSA\BitcoinECDSA;
@@ -117,7 +128,7 @@ class BitcoinECDSADecker extends BitcoinECDSA {
 
 $bitcoinECDSA = new BitcoinECDSADecker();
 
-$config = parse_ini_file("config_sample");
+$config = parse_ini_file("config");
 
 /*
 $passphrase = "myverysecretandstrongpassphrase_noneabletobrute";

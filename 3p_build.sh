@@ -66,6 +66,9 @@ KOMODO() {
 	cd ~
 	if [ -d komodo ]; then
 		cd komodo
+		if [ -f ./src/komodod ]; then
+			make clean
+		fi
 		git checkout master
 		git pull
 	else
@@ -112,6 +115,9 @@ HUSH() {
 	cd ~
 	if [ -d hush3 ]; then
 		cd hush3
+		if [ -f ./src/hushd ]; then
+			make clean
+		fi
 		git checkout v3.3.1
 		git pull
 	else

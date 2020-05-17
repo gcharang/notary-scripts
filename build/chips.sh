@@ -29,6 +29,9 @@ berkeleydb() {
 }
 
 buildCHIPS() {
+    if [ -f ./src/chipsd ]; then
+        make clean
+    fi
     git pull
     ./autogen.sh
     ./configure LDFLAGS="-L${CHIPS_PREFIX}/lib/" CPPFLAGS="-I${CHIPS_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
