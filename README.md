@@ -2,3 +2,4 @@
 
 - `cp config_sample config`
 - input the values in the config file
+- `./init.sh`
