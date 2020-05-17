@@ -48,6 +48,8 @@ IGUANA() {
 	./m_notary_build
 }
 
+# $(xxd -l 16 -p /dev/urandom)
+
 KOMODO() {
 	mkdir -p ~/.komodo
 	if [ ! -f ~/.komodo/komodo.conf ]; then
@@ -56,7 +58,7 @@ KOMODO() {
 			daemon=1
 			txindex=1
 			rpcuser=user
-			rpcpassword=$(xxd -l 16 -p /dev/urandom)
+			rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 			bind=127.0.0.1
 			rpcbind=127.0.0.1
 			rpcallowip=127.0.0.1
@@ -90,7 +92,7 @@ AYA() {
 			daemon=1
 			txindex=1
 			rpcuser=user
-			rpcpassword=$(xxd -l 16 -p /dev/urandom)
+			rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 			bind=127.0.0.1
 			rpcbind=127.0.0.1
 			rpcallowip=127.0.0.1
@@ -138,7 +140,7 @@ CHIPS() {
 			daemon=1
 			txindex=1
 			rpcuser=user
-			rpcpassword=$(xxd -l 16 -p /dev/urandom)
+			rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 			addnode=159.69.23.29
 			addnode=95.179.192.102
 			addnode=149.56.29.163
@@ -172,7 +174,7 @@ GAME() {
 			daemon=1
 			txindex=1
 			rpcuser=user
-			rpcpassword=$(xxd -l 16 -p /dev/urandom)
+			rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 			bind=127.0.0.1
 			rpcbind=127.0.0.1
 			rpcallowip=127.0.0.1
@@ -200,7 +202,7 @@ EMC2() {
 			daemon=1
 			txindex=1
 			rpcuser=user
-			rpcpassword=$(xxd -l 16 -p /dev/urandom)
+			rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 			bind=127.0.0.1
 			rpcbind=127.0.0.1
 			rpcallowip=127.0.0.1
@@ -228,7 +230,7 @@ GIN() {
 			daemon=1
 			txindex=1
 			rpcuser=user
-			rpcpassword=$(xxd -l 16 -p /dev/urandom)
+			rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 			bind=127.0.0.1
 			rpcbind=127.0.0.1
 			rpcallowip=127.0.0.1

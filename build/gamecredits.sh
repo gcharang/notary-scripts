@@ -15,8 +15,8 @@ berkeleydb() {
     tar -xzvf db-4.8.30.NC.tar.gz
     if [ -f /etc/debian_version ]; then
         DEBIAN_VERSION=$(cat /etc/debian_version)
-        DEBIAN_VERSION=${DEBIAN_VERSION%.*}
-        if [ "$DEBIAN_VERSION" -eq 10 ]; then
+        DEBIAN_VERSION_10=${DEBIAN_VERSION%.*}
+        if [ "$DEBIAN_VERSION_10" = "10" ] || [ "$DEBIAN_VERSION" = "bullseye/sid" ]; then
             #https://www.fsanmartin.co/compiling-berkeley-db-4-8-30-in-ubuntu-19/
             sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' db-4.8.30.NC/dbinc/atomic.h
         fi

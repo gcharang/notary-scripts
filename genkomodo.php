@@ -138,13 +138,13 @@ $passphrase = $config["passphrase"];
 /* available coins, you can add your own with params from src/chainparams.cpp */
 
 $coins = Array(
-    Array("name" => "BTC",  "PUBKEY_ADDRESS" =>  0, "SECRET_KEY" => 128),
-    Array("name" => "KMD",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188),
-    Array("name" => "GAME", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 166),
-    Array("name" => "HUSH", "PUBKEY_ADDRESS" => Array(0x1C,0xB8), "SECRET_KEY" => 0x80),
-    Array("name" => "EMC2", "PUBKEY_ADDRESS" => 33, "SECRET_KEY" => 176),
-    Array("name" => "GIN", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 198),
-    Array("name" => "AYA", "PUBKEY_ADDRESS" => 23, "SECRET_KEY" => 176),
+    Array("name" => "BTC",  "PUBKEY_ADDRESS" =>  0, "SECRET_KEY" => 128 , "cli" => "btc-cli"),
+    Array("name" => "KMD",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "komodo-cli"),
+    Array("name" => "GAME", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 166, "cli" => "gamecredits-cli"),
+    Array("name" => "HUSH", "PUBKEY_ADDRESS" => Array(0x1C,0xB8), "SECRET_KEY" => 0x80, "cli" => "hush-cli"),
+    Array("name" => "EMC2", "PUBKEY_ADDRESS" => 33, "SECRET_KEY" => 176, "cli" => "einsteinium-cli"),
+    Array("name" => "GIN", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 198, "cli" => "gincoin-cli"),
+    Array("name" => "AYA", "PUBKEY_ADDRESS" => 23, "SECRET_KEY" => 176, "cli" => "aryacoin-cli"),
 );
 
 $k = hash("sha256", $passphrase);
@@ -157,6 +157,25 @@ $k = bin2hex($k);
 $bitcoinECDSA->setPrivateKey($k);
 echo "             Passphrase: '" . $passphrase . "'" . PHP_EOL;
 echo PHP_EOL;
+
+foreach ($coins as $coin) {
+
+if (is_array($coin["PUBKEY_ADDRESS"])) {
+      $NetworkPrefix = bin2hex(implode("",array_map("chr", $coin["PUBKEY_ADDRESS"])));
+      $bitcoinECDSA->setNetworkPrefix($NetworkPrefix);
+} else
+      $bitcoinECDSA->setNetworkPrefix(sprintf("%02X", $coin["PUBKEY_ADDRESS"])); 
+
+// Returns the compressed public key. The compressed PubKey starts with 0x02 if it's y coordinate is even and 0x03 if it's odd, the next 32 bytes corresponds to the x coordinates.
+$NetworkPrefix = $bitcoinECDSA->getNetworkPrefix();
+
+echo $coin["cli"] . " importprivkey " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL;
+
+$address = $bitcoinECDSA->getAddress(); //compressed Bitcoin address
+echo "  Compressed Address: " . sprintf("%34s",$address) . PHP_EOL;
+$address = $bitcoinECDSA->getUncompressedAddress();
+echo "Uncompressed Address: " . sprintf("%34s",$address) . PHP_EOL;
+}
 
 
 foreach ($coins as $coin) {
