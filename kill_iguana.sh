@@ -5,10 +5,3 @@
 #set -e
 
 pkill -15 iguana
-komodo-cli stop
-hush-cli stop
-chips-cli stop
-gamecredits-cli stop
-einsteinium-cli stop
-gincoin-cli stop
-aryacoin-cli stop

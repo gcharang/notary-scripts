@@ -250,6 +250,18 @@ GIN() {
 	./build.sh
 }
 
+SYNC() {
+	chipsd &
+	gamecreditsd &
+	einsteiniumd &
+	gincoind &
+	komodod &
+	hushd &
+	aryacoind &
+	echo "Waiting 6 minutes to give the daemons time to startup properly"
+	sleep 3600
+}
+
 NANOMSG
 IGUANA
 KOMODO
@@ -259,3 +271,5 @@ CHIPS
 GAME
 EMC2
 GIN
+SYNC
+php importWifs3pCoins

@@ -5,16 +5,16 @@ set -exuo pipefail
 #set -e
 
 # KMD
-tail -f ~/.komodo/debug.log
+tail ~/.komodo/debug.log
 # HUSH
-tail -f ~/.komodo/HUSH3/debug.log
+tail ~/.komodo/HUSH3/debug.log
 # CHIPS
-tail -f ~/.chips/debug.log
+tail ~/.chips/debug.log
 # GAME
-tail -f ~/.gamecredits/debug.log
+tail ~/.gamecredits/debug.log
 # EMC2
-tail -f ~/.einsteinium/debug.log
+tail ~/.einsteinium/debug.log
 # GIN
-tail -f ~/.gincoincore/debug.log
+tail ~/.gincoincore/debug.log
 # AYA
-tail -f ~/.aryacoin/debug.log
+tail ~/.aryacoin/debug.log

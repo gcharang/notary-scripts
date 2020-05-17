@@ -14,8 +14,6 @@ chipsd -pubkey=$pubkey &
 gamecreditsd -pubkey=$pubkey &
 einsteiniumd -pubkey=$pubkey &
 gincoind -pubkey=$pubkey &
-sleep 60
-cd komodo/src
-komodod -pubkey=$pubkey &
-hushd &
-aryacoind &
+komodod -notary -pubkey=$pubkey &
+hushd -pubkey=$pubkey &
+aryacoind -pubkey=$pubkey &
