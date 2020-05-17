@@ -115,7 +115,7 @@ HUSH() {
 		git checkout v3.3.1
 		git pull
 	else
-		git clone https://github.com/myhush/hush3 --b v3.3.1
+		git clone https://github.com/myhush/hush3 -b v3.3.1
 		cd hush3
 	fi
 	./zcutil/build.sh -j$(nproc)
