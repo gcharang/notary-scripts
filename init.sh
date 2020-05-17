@@ -4,6 +4,8 @@ set -euo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
 
+git submodule init
+git submodule update --init --recursive
 if [ -f /etc/debian_version ]; then
     DEBIAN_VERSION=$(cat /etc/debian_version)
     DEBIAN_VERSION=${DEBIAN_VERSION%.*}
