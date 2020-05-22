@@ -47,8 +47,7 @@ berkeleydbMod() {
         }
 EOL
 
-    g++ atomic-builtin-test.cpp -I./db-4.8.30.NC/dbinc -DHAVE_ATOMIC_SUPPORT -DHAVE_ATOMIC_X86_GCC_ASSEMBLY -o atomic-builtin-test 2>/dev/null
-    if [ $? -eq 0 ]; then
+    if g++ atomic-builtin-test.cpp -I./db-4.8.30.NC/dbinc -DHAVE_ATOMIC_SUPPORT -DHAVE_ATOMIC_X86_GCC_ASSEMBLY -o atomic-builtin-test 2>/dev/null; then
         echo "No changes to bdb source are needed ..."
         rm atomic-builtin-test 2>/dev/null
     else
