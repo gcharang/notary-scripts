@@ -4,7 +4,17 @@ These scripts work for Ubuntu 18.04/20.04 and Debian 10
 
 ## For both Main and 3P server
 
-In a fresh server, set ulimit value
+### Update tmux
+
+```bash
+./tmux_install_latest.sh
+```
+
+Kill the current tmux session and relaunch a new one if necessary.
+
+### Set ulimit value
+
+In a fresh server:
 
 ### Edit the `/etc/security/limits.conf` file
 

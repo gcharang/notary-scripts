@@ -13,4 +13,6 @@ cd tmux-3.1b
 ./configure
 make && sudo make install
 rm -fr /tmp/tmux
+tmux kill-server
 sudo killall -9 tmux
+cp ./dotfiles/.tmux.conf ~/.tmux.conf
