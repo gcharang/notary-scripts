@@ -5,6 +5,7 @@
 #set -e
 
 tmux new-window -n 'tails'
+tmux select-pane -t 0
 tmux split-window -v -t 0 'tmux select-pane -T AYA && tail -f ~/.komodo/debug.log'
 tmux select-pane -t 0
 tmux split-window -v -t 0 'tmux select-pane -T GAME && tail -f ~/.komodo/debug.log'
