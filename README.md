@@ -4,9 +4,10 @@ These scripts work for Ubuntu 18.04/20.04 and Debian 10
 
 ## For both Main and 3P server
 
-### Update tmux
+### Update tmux and install dependencies
 
 ```bash
+./init.sh # installs deps
 ./tmux_install_latest.sh
 ```
 
@@ -58,10 +59,10 @@ ulimit -n
 ## 3rd Party Server
 
 ```bash
-./init.sh
 ./3p_build.sh
-php importWifs3pCoins # in a different window/pane and execute the commands displayed to import the wifs
-./3p_tails_tmux.sh # starts a new window with all the tails
-./3p_start_iguana.sh # after chains are synced and wifs imported
+php importWifs3pCoins # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the next commands
+./3p_stop_coins.sh # wait a minute
+./3p_tails_tmux.sh # starts a new window with all the tails and starts all the daemons
+./3p_start_iguana.sh # after chains are synced and rescans done
 ./3p_start_dPoW.sh # after seeing "INIT with 64 notaries"
 ```
