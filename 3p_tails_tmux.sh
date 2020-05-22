@@ -21,6 +21,9 @@ tmux select-pane -t 0
 tmux split-window -h -t 0 'tmux select-pane -T AYA && tail -f ~/.aryacoin/debug.log'
 tmux select-pane -t 0
 tmux select-layout tiled
+tmux select-pane -T daemons
+./3p_start_coins.sh
+
 #tmux select-pane -T title1
 
 #tmux new-window \; split-window -v -l 25 \; split-window -h -l 70 \; select-pane -U \; split-window -h -l 70 \; select-pane -L
