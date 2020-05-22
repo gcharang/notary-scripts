@@ -49,5 +49,8 @@ ulimit -n
 
 ```bash
 ./init.sh
-./
+./3p_build.sh
+php importWifs3pCoins # in a different window/pane and execute the commands displayed to import the wifs 
+./3p_start_iguana.sh # after chains are synced and wifs imported
+./3p_start_dPoW.sh # after seeing "INIT with 64 notaries"
 ```

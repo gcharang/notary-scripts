@@ -163,6 +163,6 @@ echo PHP_EOL;
 
 foreach ($coins as $coin) {
 echo $coin["cli"] . " importprivkey " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL;
-$out = shell_exec($coin["cli"] . " importprivkey " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL);
-echo($coin["cli"] . " : " . $out . PHP_EOL);
+//$out = print_r($coin["cli"] . " importprivkey " . $bitcoinECDSA->getWIF( true, $coin["SECRET_KEY"]) . PHP_EOL);
+//echo($coin["cli"] . " : " . $out . PHP_EOL);
 }

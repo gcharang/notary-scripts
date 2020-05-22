@@ -272,4 +272,3 @@ GAME
 EMC2
 GIN
 SYNC
-php importWifs3pCoins
