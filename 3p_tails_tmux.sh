@@ -13,11 +13,11 @@ tmux split-window -v -t 0 'tmux select-pane -T GIN && tail -f ~/.komodo/debug.lo
 tmux select-pane -t 0
 tmux split-window -v -t 0 'tmux select-pane -T CHIPS && tail -f ~/.komodo/debug.log'
 tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T HUSH && tail -f ~/.komodo/debug.log'
+tmux split-window -h -t 0 'tmux select-pane -T HUSH && tail -f ~/.komodo/debug.log'
 tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T VRSC && tail -f ~/.komodo/debug.log'
+tmux split-window -h -t 0 'tmux select-pane -T VRSC && tail -f ~/.komodo/debug.log'
 tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
+tmux split-window -h -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
 tmux select-pane -t 0
 tmux select-layout tiled
 #tmux select-pane -T title1
