@@ -1,6 +1,28 @@
 # Scripts for running Komodo Notary Node
 
-These scripts work for Ubuntu 18.04/20.04 and Debian 10
+Use https://github.com/DeckerSU/address_gen to generate seed words for vanity KMD addresses.
+
+```git
+diff --git a/vanity.cpp b/vanity.cpp
+index 69e879e..e5a35b9 100644
+--- a/vanity.cpp
++++ b/vanity.cpp
+@@ -130,7 +130,7 @@ int main()
+     std::string start_pattern = "beginofyourpassphrase";
+     std::string end_pattern = "endofyourpassphrase";
+     
+-    check_passphrase(start_pattern, end_pattern, "komod");
++    check_passphrase(start_pattern, end_pattern, "gcg");
+ 
+     return 0; 
+-}
+```
+
+Notary script repos for reference:
+- https://github.com/gcharang/nntools
+- https://github.com/MrMLynch/nnutils
+
+The scripts in this repo work for Ubuntu 18.04/20.04 and Debian 10
 
 ## For both Main and 3P server
 
