@@ -22,7 +22,7 @@ Notary script repos for reference:
 - https://github.com/gcharang/nntools
 - https://github.com/MrMLynch/nnutils
 
-The scripts in this repo work for Ubuntu 18.04/20.04 and Debian 10
+The scripts in this repo work for Debian 10
 
 ## For both Main and 3P server
 
