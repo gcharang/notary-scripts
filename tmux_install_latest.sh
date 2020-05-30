@@ -3,6 +3,8 @@
 #set -exuo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 
+echo "this script kills your current tmux session if any. you have to kill the tmux server and restart it"
+
 set -euxo pipefail
 PWD=$(pwd)
 sudo apt-get install libevent-dev build-essential bison pkg-config libncurses5-dev libncursesw5-dev
