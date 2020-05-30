@@ -12,8 +12,9 @@ wget -qO- https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b.tar.gz |
 cd tmux-3.1b
 ./configure
 make && sudo make install
+cp ./dotfiles/.tmux.conf ~/.tmux.conf
+
 rm -fr /tmp/tmux
 tmux kill-sess
 tmux kill-server
 sudo killall -9 tmux
-cp ./dotfiles/.tmux.conf ~/.tmux.conf

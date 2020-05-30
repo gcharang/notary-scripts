@@ -1,3 +1,6 @@
+###
+#FAILED to find a way to set a failover ip as default to a OVH dedicated server
+###
 https://docs.ovh.com/ie/en/vps/network-ipaliasing-vps/ --> wrong?
 
 cat /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
@@ -18,6 +21,12 @@ iface enp1s0f0 inet static
 address 139.99.244.88
 netmask 255.255.255.255
 
+https://docs.ovh.com/ca/en/dedicated/network-ipaliasing/
 ^^^ --> to add additional ips not a single static ip
 
 https://docs.ovh.com/gb/en/public-cloud/make-failover-ip-configuration-persistent/
+https://linuxconfig.org/how-to-set-a-static-ip-address-on-debian-10-buster
+https://askubuntu.com/questions/459140/why-dhclient-is-still-running-when-i-choose-static-ip
+https://wiki.debian.org/NetworkConfiguration
+
+
