@@ -8,7 +8,7 @@ tmux new-window -n 'tails'
 # multitail for smart chains
 MILTITAIL_CMD="multitail --mergeall --no-repeat --follow-all"
 for f in $(find ~/.komodo -name 'debug.log'); do
-    if [ $f != "/home/$USER/.komodo/debug.log" ] && [ $f != "/home/$USER/VRSC/.komodo/debug.log" ]; then
+    if [ $f != "/home/$USER/.komodo/debug.log" ] && [ $f != "/home/$USER/.komodo/VRSC/debug.log" ]; then
         COIN_NAME=$(echo "$f" | awk -F'/' '{print $5}')
         MILTITAIL_CMD="$MILTITAIL_CMD --label '[$COIN_NAME]' $f"
     fi
