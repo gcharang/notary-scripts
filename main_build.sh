@@ -146,10 +146,15 @@ SYNC() {
 	find ~/.komodo -type f -iname "*.conf" -exec chmod 600 {} \; # restricts access to all Smart Chain conf files
 }
 
-NANOMSG
-IGUANA
-KOMODO
-BITCOIN
-VRSC
+if [ $# = 0 ]; then
+	NANOMSG
+	IGUANA
+	KOMODO
+	BITCOIN
+	VRSC
 
-SYNC
+	SYNC
+else
+	eval $1
+	eval $2
+fi
