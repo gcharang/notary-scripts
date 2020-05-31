@@ -12,7 +12,18 @@ tmux split-window -v -t 0 'tmux select-pane -T BTC && tail -f ~/.gamecredits/deb
 tmux select-pane -t 0
 tmux split-window -v -t 0 'tmux select-pane -T VRSC && tail -f ~/.gincoincore/debug.log'
 tmux select-pane -t 0
-# try multitail for smart chains
+# multitail for smart chains
+MILTITAIL_CMD="multitail --mergeall --no-repeat --follow-all"
+for f in $(find ~/.komodo -name 'debug.log'); do
+    if [ $f != "/home/$USER/.komodo/debug.log" ] && [ $f != "/home/$USER/VRSC/.komodo/debug.log" ]; then
+        COIN_NAME=$(echo "$f" | awk -F'/' '{print $5}')
+        MILTITAIL_CMD="$MILTITAIL_CMD --label '[$COIN_NAME]' $f"
+    fi
+done
+tmux select-pane -t 0
+tmux split-window -v -t 0 "tmux select-pane -T SMARTCHAINS && eval $MILTITAIL_CMD"
+
+#multitail --mergeall --no-repeat --follow-all --label "[KMD]" ~/.komodo/debug.log --label "[BTC]" ~/.bitcoin/debug.log
 tmux select-layout tiled
 tmux select-pane -T daemons
 ./main_start_coins.sh
