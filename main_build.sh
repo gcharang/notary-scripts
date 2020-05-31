@@ -137,11 +137,11 @@ SYNC() {
 	bitcoind &
 	komodod &
 	verusd &
-	echo "Waiting 6 minutes to give the daemons time to startup properly"
+	echo "Waiting 60 minutes to give the daemons time to startup properly"
 	sleep 3600
 	cd ~/komodo/src
 	./assetchains.old
-	echo "Waiting 6 minutes to give the daemons time to startup properly"
+	echo "Waiting 60 minutes to give the daemons time to startup properly"
 	sleep 3600
 	find ~/.komodo -type f -iname "*.conf" -exec chmod 600 {} \; # restricts access to all Smart Chain conf files
 }
