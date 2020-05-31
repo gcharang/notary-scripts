@@ -3,7 +3,7 @@
 #set -exuo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 
-echo "this script kills your current tmux session if any. you have to kill the tmux server and restart it"
+echo "this script kills your current tmux session if any. you have to kill the tmux server and restart it after the script finishes executing"
 echo "this is your chance to CTRL+C it"
 echo "waiting 5 seconds"
 echo "in 5..." && sleep 1
