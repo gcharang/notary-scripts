@@ -117,7 +117,7 @@ VRSC() {
 	cd ~
 	if [ -d VerusCoin ]; then
 		cd VerusCoin
-		if [ -f ./src/VerusCoin ]; then
+		if [ -f ./src/verusd ]; then
 			make clean
 		fi
 		git checkout master
@@ -130,7 +130,7 @@ VRSC() {
 	./zcutil/build.sh -j$(nproc)
 	echo "Done building VRSC!"
 	sudo ln -sf /home/$USER/VerusCoin/src/verusd /usr/local/bin/verusd
-	sudo ln -sf /home/$USER/VerusCoin/src/verus-cli /usr/local/bin/verus-cli
+	sudo ln -sf /home/$USER/VerusCoin/src/verus /usr/local/bin/verus
 }
 
 SYNC() {

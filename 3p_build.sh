@@ -250,6 +250,24 @@ GIN() {
 	./build.sh
 }
 
+MCL() {
+	cd ~
+	if [ -d Marmara-v.1.0 ]; then
+		cd Marmara-v.1.0
+		if [ -f ./src/komodod ]; then
+			make clean
+		fi
+		git checkout master
+		git pull
+	else
+		git clone https://github.com/marmarachain/Marmara-v.1.0 -b master
+		cd Marmara-v.1.0
+		git checkout 9013c5cb1bc88cf5db5910e4f251f56757385f5f
+	fi
+	./zcutil/build.sh -j$(nproc)
+	echo "Done building MCL!"
+}
+
 SYNC() {
 	chipsd &
 	gamecreditsd &
@@ -258,8 +276,7 @@ SYNC() {
 	komodod &
 	hushd &
 	aryacoind &
-	echo "Waiting 6 minutes to give the daemons time to startup properly"
-	sleep 3600
+	~/Marmara-v.1.0/src/komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 &
 }
 
 NANOMSG
@@ -271,4 +288,6 @@ CHIPS
 GAME
 EMC2
 GIN
+MCL
+
 SYNC
