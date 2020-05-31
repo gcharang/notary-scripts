@@ -6,5 +6,6 @@
 
 komodo-cli stop
 bitcoin-cli stop
-vrsc-cli stop
-fiat-cli stop
+komodo-cli -ac_name=VRSC stop
+cd ~/komodo/src
+./fiat-cli stop
