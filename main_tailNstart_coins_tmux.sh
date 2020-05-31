@@ -5,13 +5,6 @@
 #set -e
 
 tmux new-window -n 'tails'
-tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
-tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T BTC && tail -f ~/.gamecredits/debug.log'
-tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T VRSC && tail -f ~/.gincoincore/debug.log'
-tmux select-pane -t 0
 # multitail for smart chains
 MILTITAIL_CMD="multitail --mergeall --no-repeat --follow-all"
 for f in $(find ~/.komodo -name 'debug.log'); do
@@ -24,9 +17,19 @@ tmux select-pane -t 0
 tmux split-window -v -t 0 "tmux select-pane -T SMARTCHAINS && eval $MILTITAIL_CMD"
 
 #multitail --mergeall --no-repeat --follow-all --label "[KMD]" ~/.komodo/debug.log --label "[BTC]" ~/.bitcoin/debug.log
+tmux select-pane -t 0
+tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
+tmux select-pane -t 0
+tmux split-window -v -t 0 'tmux select-pane -T BTC && tail -f ~/.gamecredits/debug.log'
+tmux select-pane -t 0
+tmux split-window -v -t 0 'tmux select-pane -T VRSC && tail -f ~/.gincoincore/debug.log'
+tmux select-pane -t 0
+
 tmux select-layout tiled
 tmux select-pane -T daemons
-./main_start_coins.sh
+if [ $1 = 1 ]; then
+    ./main_start_coins.sh
+fi
 
 #tmux select-pane -T title1
 
