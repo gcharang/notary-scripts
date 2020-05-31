@@ -22,7 +22,7 @@ tmux split-window -h -t 0 'tmux select-pane -T AYA && tail -f ~/.aryacoin/debug.
 tmux select-pane -t 0
 tmux select-layout tiled
 tmux select-pane -T daemons
-if [ $1 = 1 ]; then
+if [ "$1" = 1 ]; then
     ./3p_start_coins.sh
 fi
 
