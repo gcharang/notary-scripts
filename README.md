@@ -82,9 +82,10 @@ ulimit -n
 
 ```bash
 ./3p_build.sh
-php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the applicable next wif import commands
+php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the applicable wif import commands
 ./3p_stop_coins.sh # wait a minute and check htop to verify all the coins are stopped
 ./3p_tails_tmux.sh 1 # starts a new window with all the tails and starts all the daemons with pubkeys
+./3p_allow_ports.sh # opens coin ports
 ./3p_start_iguana.sh # after chains are synced and rescans are done
 ./3p_start_dPoW.sh # after seeing "INIT with 64 notaries"
 ```
@@ -93,7 +94,7 @@ php genWifImports.php # in a different window/pane and execute the commands disp
 
 ```bash
 ./main_build.sh
-php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the applicable next wif import commands
+php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the applicable wif import commands
 ./main_stop_coins.sh # wait a minute and check htop to verify all the coins are stopped
 ./main_tailNstart_coins_tmux 1 # starts a new window with all the tails and starts all the daemons with pubkeys
 ./main_allow_ports.sh # opens coin ports

@@ -29,11 +29,11 @@ IGUANA() {
 	cd ~
 	if [ -d dPoW ]; then
 		cd dPoW
-		git checkout master
+		git checkout s4
 		git pull
 		cd iguana
 	else
-		git clone https://github.com/KomodoPlatform/dPoW -b master
+		git clone https://github.com/KomodoPlatform/dPoW -b s4
 		cd dPoW/iguana
 	fi
 
