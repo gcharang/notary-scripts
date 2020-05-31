@@ -1,2 +1,4 @@
 passphrase=<REPLACE_SEED_WORDS_3P_OR_MAIN>
 pubkey=<REPLACE_PUBKEY_3P_OR_MAIN>
+main=<true or false>
+3p=<true or false>
