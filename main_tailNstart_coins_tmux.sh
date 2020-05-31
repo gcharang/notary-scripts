@@ -20,11 +20,10 @@ tmux split-window -v -t 0 "tmux select-pane -T SMARTCHAINS && eval $MILTITAIL_CM
 tmux select-pane -t 0
 tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
 tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T BTC && tail -f ~/.gamecredits/debug.log'
+tmux split-window -v -t 0 'tmux select-pane -T BTC && tail -f ~/.bitcoin/bitcoin.log'
 tmux select-pane -t 0
-tmux split-window -v -t 0 'tmux select-pane -T VRSC && tail -f ~/.gincoincore/debug.log'
+tmux split-window -v -t 0 'tmux select-pane -T VRSC && tail -f ~/.komodo/VRSC/debug.log'
 tmux select-pane -t 0
-
 tmux select-layout tiled
 tmux select-pane -T daemons
 if [ $1 = 1 ]; then
