@@ -19,7 +19,8 @@ fi
 # Setup logrotate
 
 sudo apt-get install logrotate
-sudo cat <<-EOL >/etc/logrotate.d/coin-daemon-logs
+tmp=/tmp/coin-daemon-logs.eof
+cat <<-EOL >$tmp
     /home/*/.*/debug.log /home/*/.komodo/*/debug.log {
       daily
       rotate 3
@@ -29,3 +30,4 @@ sudo cat <<-EOL >/etc/logrotate.d/coin-daemon-logs
       compress
     }
 EOL
+sudo mv $tmp /etc/logrotate.d/coin-daemon-logs
