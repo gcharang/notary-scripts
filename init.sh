@@ -21,13 +21,13 @@ fi
 sudo apt-get install logrotate
 tmp=/tmp/coin-daemon-logs.eof
 cat <<-EOL >$tmp
-    /home/*/.*/debug.log /home/*/.komodo/*/debug.log {
-      daily
-      rotate 3
-      copytruncate
-      missingok
-      notifempty
-      compress
-    }
+/home/*/.*/debug.log /home/*/.komodo/*/debug.log {
+  daily
+  rotate 3
+  copytruncate
+  missingok
+  notifempty
+  compress
+}
 EOL
 sudo mv $tmp /etc/logrotate.d/coin-daemon-logs
