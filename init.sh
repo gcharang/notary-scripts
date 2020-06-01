@@ -15,3 +15,17 @@ if [ -f /etc/debian_version ]; then
 else
     sudo apt install php7.2-cli php7.2-gmp php7.2-mbstring multitail
 fi
+
+# Setup logrotate
+
+sudo apt-get install logrotate
+sudo cat <<-EOL >/etc/logrotate.d/coin-daemon-logs
+    /home/*/.*/debug.log /home/*/.komodo/*/debug.log {
+      daily
+      rotate 3
+      copytruncate
+      missingok
+      notifempty
+      compress
+    }
+EOL
