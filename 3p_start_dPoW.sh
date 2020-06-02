@@ -5,4 +5,4 @@
 #set -e
 
 cd ~/dPoW/iguana
-./dpowassets_3rdparty
+./m_notary_3rdparty

@@ -1,13 +1,5 @@
 #!/bin/bash
 
-kmd_coins+=(KMD)
-for coin in "${kmd_coins[@]}"; do
-    if [ "${coin}" != "KMD" ]; then
-        p2pport=$(komodo-cli -ac_name=${coin} getinfo 2>/dev/null | jq .p2pport)
-        if [ ! -z "${p2pport}" ]; then
-            echo "sudo ufw allow ${p2pport}/tcp comment '${coin} p2p port'"
-        fi
-    else
-        echo "sudo ufw allow 7770/tcp comment '${coin} p2p port'"
-    fi
-done
+#readarray -t 3p_coins < <(curl -s https://raw.githubusercontent.com/KomodoPlatform/dPoW/s4/iguana/3p_coins.json | jq -r '[.[].newcoin] | join("\n")')
+# eval "sudo ufw allow ${p2pport}/tcp comment '${coin} p2p port'"
+curl -s https://raw.githubusercontent.com/KomodoPlatform/dPoW/s4/iguana/3p_coins.json | jq -r '[.[] | "sudo ufw allow \(.p2p)/tcp comment \"\(.newcoin) p2p port\""] | join("\n")'
