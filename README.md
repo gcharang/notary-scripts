@@ -2,7 +2,7 @@
 
 Use https://github.com/DeckerSU/address_gen to generate seed words for vanity KMD addresses.
 
-```git
+```diff
 diff --git a/vanity.cpp b/vanity.cpp
 index 69e879e..e5a35b9 100644
 --- a/vanity.cpp
