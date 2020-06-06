@@ -6,11 +6,11 @@ set -euo pipefail
 
 source config
 
-if [ $main = true && $third_party = true ]; then
+if [ "$main" = true && "$third_party" = true ]; then
 	echo 'Please update config to set only one of "main" or "third_party" to be true'
-elif [ $main = false && $third_party = false ]; then
+elif [ "$main" = false && "$third_party" = false ]; then
 	echo 'Please update config to set atleast one of "main" or "third_party" to be true'
-elif [ $main = false && $third_party = true ]; then
+elif [ "$main" = false && "$third_party" = true ]; then
 
 	SCRIPT_DIR=$(pwd)
 
@@ -303,7 +303,7 @@ elif [ $main = false && $third_party = true ]; then
 		eval $2
 	fi
 
-elif [ $main = true && $third_party = false ]; then
+elif [ "$main" = true && "$third_party" = false ]; then
 	SCRIPT_DIR=$(pwd)
 
 	sudo apt-get install libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev python-zmq zlib1g-dev wget curl bsdmainutils automake cmake clang libsodium-dev libcurl4-gnutls-dev libssl-dev git unzip python jq htop -y
