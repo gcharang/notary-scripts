@@ -30,16 +30,16 @@ The scripts in this repo work for Debian 10
 
 ```bash
 ./init.sh # installs deps
-./tmux_install_latest.sh
+./tmux_install_latest.sh # optional, but prerequisite for tailNstart_coins_tmux.sh script
 ```
 
 Kill the current tmux session and relaunch a new one if necessary.
 
-### Set ulimit value
+### Set ulimit value in both servers
 
 In a fresh server:
 
-### Edit the `/etc/security/limits.conf` file
+#### Edit the `/etc/security/limits.conf` file
 
 ```bash
 sudo nano /etc/security/limits.conf
@@ -54,7 +54,7 @@ add these lines:
 
 Save and close the file
 
-### Edit the `/etc/pam.d/common-session` file
+#### Edit the `/etc/pam.d/common-session` file
 
 ```bash
 sudo nano /etc/pam.d/common-session
@@ -77,25 +77,15 @@ ulimit -n
 
 - `cp config_sample config`
 - change the values of `pubkey` and `passphrase` appropriately (Main server vs 3P) in the newly created `config` file
+- also, change one of the keys `main` or `third_party` to `true` appropriately
 
-## 3rd Party Server
-
-```bash
-./3p_build.sh
-php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the applicable wif import commands
-./3p_stop_coins.sh # wait a minute and check htop to verify all the coins are stopped
-./3p_tailNstart_coins_tmux.sh 1 # starts a new window with all the tails and starts all the daemons with pubkeys
-./3p_allow_ports.sh # opens coin ports
-./3p_start_dPoW.sh # after chains are synced and rescans are done
-```
-
-## Main Server
+## Both Servers
 
 ```bash
-./main_build.sh
-php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait 10 minutes and execute the applicable wif import commands
-./main_stop_coins.sh # wait a minute and check htop to verify all the coins are stopped
-./main_tailNstart_coins_tmux.sh 1 # starts a new window with all the tails and starts all the daemons with pubkeys
-./main_allow_ports.sh # opens coin ports
-./main_start_dPoW.sh # after chains are synced and rescans are done
+./build.sh
+php genWifImports.php # in a different window/pane and execute the commands displayed to import the wifs. wait for the daemons to start syncing and execute the applicable wif import commands
+./stop_coins.sh # wait a minute and check htop to verify all the coins are stopped
+./tailNstart_coins_tmux.sh 1 # starts a new window with all the tails and starts all the daemons with pubkeys
+./allow_ports.sh # opens coin ports
+./start_dPoW.sh # after chains are synced and rescans are done
 ```
