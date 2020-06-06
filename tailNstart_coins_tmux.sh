@@ -6,11 +6,11 @@
 
 source config
 
-if [ "$main" = true && "$third_party" = true ]; then
+if [ "$main" = true ] && [ "$third_party" = true ]; then
     echo 'Please update config to set only one of "main" or "third_party" to be true'
-elif [ "$main" = false && "$third_party" = false ]; then
+elif [ "$main" = false ] && [ "$third_party" = false ]; then
     echo 'Please update config to set atleast one of "main" or "third_party" to be true'
-elif [ "$main" = false && "$third_party" = true ]; then
+elif [ "$main" = false ] && [ "$third_party" = true ]; then
     tmux new-window -n 'tails'
     tmux select-pane -t 0
     tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
@@ -41,7 +41,7 @@ elif [ "$main" = false && "$third_party" = true ]; then
 #tmux new-window \; split-window -v -l 25 \; split-window -h -l 50 \; split-window -h -l 50 \; split-window -h -l 50 \; split-window -h -l 50 \; split-window -h -l 50 "tail -f ~/.komodo/debug.log"\;
 #tmux select-layout tiled
 
-elif [ "$main" = true && "$third_party" = false ]; then
+elif [ "$main" = true ] && [ "$third_party" = false ]; then
 
     tmux new-window -n 'tails'
     # multitail for smart chains
