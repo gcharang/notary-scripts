@@ -64,4 +64,26 @@ EOL
 /etc/init.d/networking restart
 ```
 
-^ after doing that, write `nameserver 8.8.8.8` to /etc/resolv.conf and restart. now network works and domains names are resolved
+^ after doing that, write `nameserver 8.8.8.8` to /etc/resolv.conf and reboot. now network works and domains names are resolved
+
+add sources to `/etc/apt/sources/list`
+use nano. mark text : `ctrl+^` , copy text `alt+^`, paste text `ctrl+u`, cut `ctrl+k`
+```
+deb http://deb.debian.org/debian buster main contrib non-free
+deb-src http://deb.debian.org/debian buster main contrib non-free
+
+deb http://deb.debian.org/debian-security/ buster/updates main contrib non-free
+deb-src http://deb.debian.org/debian-security/ buster/updates main contrib non-free
+
+deb http://deb.debian.org/debian buster-updates main contrib non-free
+deb-src http://deb.debian.org/debian buster-updates main contrib non-free
+```
+
+install openssh-server
+edit /etc/ssh/sshd_config `PermitRootLogin yes`
+set password `passwd`
+connect from desktop using `ssh root@failoverIP`
+add a ssh pubkey to ~/.ssh/authorized_keys
+disconnect and connect through pubkey auth
+install git, clone freshubuntu
+run it
