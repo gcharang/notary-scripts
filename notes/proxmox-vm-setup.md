@@ -79,11 +79,12 @@ deb http://deb.debian.org/debian buster-updates main contrib non-free
 deb-src http://deb.debian.org/debian buster-updates main contrib non-free
 ```
 
-install openssh-server
-edit /etc/ssh/sshd_config `PermitRootLogin yes`
-set password `passwd`
-connect from desktop using `ssh root@failoverIP`
-add a ssh pubkey to ~/.ssh/authorized_keys
-disconnect and connect through pubkey auth
-install git, clone freshubuntu
-run it
+- install openssh-server
+- edit /etc/ssh/sshd_config `PermitRootLogin yes`
+- `service sshd restart`
+- set password `passwd`
+- connect from desktop using `ssh root@failoverIP`
+- add a ssh pubkey to ~/.ssh/authorized_keys
+- disconnect and connect through pubkey auth
+- install git, clone freshubuntu
+- run it
