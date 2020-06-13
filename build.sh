@@ -128,9 +128,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			if [ -f ./src/hushd ]; then
 				make clean
 			fi
+			git checkout master
 			git pull
 		else
-			git clone https://github.com/myhush/hush3 -b v3.3.1
+			git clone https://github.com/myhush/hush3 -b master
 			cd hush3
 		fi
 		git checkout v3.3.1
