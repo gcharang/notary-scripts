@@ -4,10 +4,7 @@
 set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
-if [ -f ./src/gincoind ]; then
-    git reset --hard
-    git clean -fdx
-fi
+
 berkeleydb() {
     GIN_ROOT=$(pwd)
     GIN_PREFIX="${GIN_ROOT}/db4"

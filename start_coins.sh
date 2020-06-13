@@ -15,7 +15,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     chipsd -pubkey=$pubkey &
     gamecreditsd -pubkey=$pubkey &
     einsteiniumd -pubkey=$pubkey &
-    gincoind -pubkey=$pubkey &
+    # gincoind -pubkey=$pubkey &
     hushd -pubkey=$pubkey &
     aryacoind -pubkey=$pubkey &
     verusd -pubkey=$pubkey &

@@ -110,7 +110,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d AYAv2 ]; then
 			cd AYAv2
+			git reset --hard
+			git clean -fdx
 			git checkout master
+			git pull
 		else
 			git clone https://github.com/sillyghost/AYAv2.git -b master
 
@@ -126,10 +129,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d hush3 ]; then
 			cd hush3
-			if [ -f ./src/hushd ]; then
-				git reset --hard
-				git clean -fdx
-			fi
+			git reset --hard
+			git clean -fdx
 			git checkout master
 			git pull
 		else
@@ -167,7 +168,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d chips3 ]; then
 			cd chips3
+			git reset --hard
+			git clean -fdx
 			git checkout master
+			git pull
 		else
 			git clone https://github.com/jl777/chips3 -b master
 		fi
@@ -196,7 +200,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d GameCredits ]; then
 			cd GameCredits
+			git reset --hard
+			git clean -fdx
 			git checkout master
+			git pull
 		else
 			git clone https://github.com/gamecredits-project/GameCredits -b master
 		fi
@@ -225,7 +232,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d einsteinium ]; then
 			cd einsteinium
+			git reset --hard
+			git clean -fdx
 			git checkout master
+			git pull
 		else
 			git clone https://github.com/emc2foundation/einsteinium -b master
 		fi
@@ -254,7 +264,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d gincoin-core ]; then
 			cd gincoin-core
+			git reset --hard
+			git clean -fdx
 			git checkout master
+			git pull
 		else
 			git clone https://github.com/GIN-coin/gincoin-core -b master
 		fi
@@ -268,9 +281,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d Marmara-v.1.0 ]; then
 			cd Marmara-v.1.0
-			if [ -f ./src/komodod ]; then
-				make clean
-			fi
+			git reset --hard
+			git clean -fdx
 			git checkout master
 			git pull
 		else
@@ -285,9 +297,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d VerusCoin ]; then
 			cd VerusCoin
-			if [ -f ./src/verusd ]; then
-				make clean
-			fi
+			git reset --hard
+			git clean -fdx
 			git checkout master
 			git pull
 		else

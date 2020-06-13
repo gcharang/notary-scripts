@@ -4,10 +4,7 @@
 set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
-if [ -f ./src/aryacoind ]; then
-    git reset --hard
-    git clean -fdx
-fi
+
 berkeleydb() {
     AYA_ROOT=$(pwd)
     AYA_PREFIX="${AYA_ROOT}/db4"

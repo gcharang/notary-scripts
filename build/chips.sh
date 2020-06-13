@@ -6,11 +6,6 @@ set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
 
-if [ -f ./src/chipsd ]; then
-    git reset --hard
-    git clean -fdx
-fi
-
 berkeleydb() {
     CHIPS_ROOT=$(pwd)
     CHIPS_PREFIX="${CHIPS_ROOT}/db4"
