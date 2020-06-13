@@ -1,8 +1,24 @@
 #!/bin/bash
 
-komodo-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
-hush-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
-chips-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
-gamecredits-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
-einsteinium-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
-aryacoin-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
+args="$@"
+
+echo "KMD"
+komodo-cli $args
+
+echo "HUSH"
+hush-cli $args
+
+echo "CHIPS"
+chips-cli $args
+
+echo "GAME"
+gamecredits-cli $args
+
+echo "EMC2"
+einsteinium-cli $args
+
+echo "AYA"
+aryacoin-cli $args
+
+echo "VRSC"
+verus $args
