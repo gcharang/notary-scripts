@@ -273,16 +273,36 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building MCL!"
 	}
+	VRSC() {
+		cd ~
+		if [ -d VerusCoin ]; then
+			cd VerusCoin
+			if [ -f ./src/verusd ]; then
+				make clean
+			fi
+			git checkout master
+			git pull
+		else
+			git clone https://github.com/VerusCoin/VerusCoin -b master
+			cd VerusCoin
+			git checkout 391c403
+		fi
+		./zcutil/build.sh -j$(nproc)
+		echo "Done building VRSC!"
+		sudo ln -sf /home/$USER/VerusCoin/src/verusd /usr/local/bin/verusd
+		sudo ln -sf /home/$USER/VerusCoin/src/verus /usr/local/bin/verus
+	}
 
 	SYNC() {
+		verusd &
 		chipsd &
 		gamecreditsd &
 		einsteiniumd &
-		gincoind &
+		#gincoind &
 		komodod &
 		hushd &
 		aryacoind &
-		~/Marmara-v.1.0/src/komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 &
+		#~/Marmara-v.1.0/src/komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 &
 	}
 
 	if [ $# = 0 ]; then
@@ -294,8 +314,9 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		CHIPS
 		GAME
 		EMC2
-		GIN
-		MCL
+		#GIN
+		#MCL
+		VRSC
 
 		SYNC
 	else
@@ -411,32 +432,11 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 		./build.sh
 	}
 
-	VRSC() {
-		cd ~
-		if [ -d VerusCoin ]; then
-			cd VerusCoin
-			if [ -f ./src/verusd ]; then
-				make clean
-			fi
-			git checkout master
-			git pull
-		else
-			git clone https://github.com/VerusCoin/VerusCoin -b master
-			cd VerusCoin
-			git checkout 391c403
-		fi
-		./zcutil/build.sh -j$(nproc)
-		echo "Done building VRSC!"
-		sudo ln -sf /home/$USER/VerusCoin/src/verusd /usr/local/bin/verusd
-		sudo ln -sf /home/$USER/VerusCoin/src/verus /usr/local/bin/verus
-	}
-
 	SYNC() {
 		bitcoind &
 		komodod &
-		verusd &
-		echo "Waiting 6 minutes to give the daemons time to startup properly"
-		sleep 360
+		#echo "Waiting 6 minutes to give the daemons time to startup properly"
+		#sleep 360
 		cd ~/komodo/src
 		./assetchains.old
 		echo "Waiting 10 minutes to give the daemons time to startup properly"
@@ -449,7 +449,6 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 		IGUANA
 		KOMODO
 		BITCOIN
-		VRSC
 
 		SYNC
 	else
