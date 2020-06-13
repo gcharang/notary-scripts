@@ -62,7 +62,6 @@ buildGAME() {
     if [ -f ./src/gamecreditsd ]; then
         make clean
     fi
-    git pull
     ./autogen.sh
     ./configure --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)

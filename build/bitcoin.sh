@@ -38,7 +38,6 @@ buildBITCOIN() {
     if [ -f ./src/bitcoind ]; then
         make clean
     fi
-    git pull
     ./autogen.sh
     ./configure LDFLAGS="-L${BITCOIN_PREFIX}/lib/" CPPFLAGS="-I${BITCOIN_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)
