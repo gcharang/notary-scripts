@@ -128,12 +128,12 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			if [ -f ./src/hushd ]; then
 				make clean
 			fi
-			git checkout v3.3.1
 			git pull
 		else
 			git clone https://github.com/myhush/hush3 -b v3.3.1
 			cd hush3
 		fi
+		git checkout v3.3.1
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building HUSH!"
 		sudo ln -sf /home/$USER/hush3/src/hush-cli /usr/local/bin/hush-cli
