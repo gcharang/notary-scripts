@@ -164,10 +164,11 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d chips3 ]; then
 			cd chips3
-			git checkout dev
+			git checkout master
 		else
-			git clone https://github.com/jl777/chips3 -b dev
+			git clone https://github.com/jl777/chips3 -b master
 		fi
+		git checkout 31d59f9
 		cd $SCRIPT_DIR
 		cp ./build/chips.sh ~/chips3/build_chips.sh
 		cd ~/chips3
@@ -196,6 +197,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		else
 			git clone https://github.com/gamecredits-project/GameCredits -b master
 		fi
+		git checkout 025f105
 		cd $SCRIPT_DIR
 		cp ./build/gamecredits.sh ~/GameCredits/build.sh
 		cd ~/GameCredits
@@ -224,6 +226,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		else
 			git clone https://github.com/emc2foundation/einsteinium -b master
 		fi
+		git checkout 70d7dc2
 		cd $SCRIPT_DIR
 		cp ./build/einsteinium.sh ~/einsteinium/build.sh
 		cd ~/einsteinium
@@ -287,8 +290,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		else
 			git clone https://github.com/VerusCoin/VerusCoin -b master
 			cd VerusCoin
-			git checkout 391c403
 		fi
+		git checkout 9d4787b
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building VRSC!"
 		sudo ln -sf /home/$USER/VerusCoin/src/verusd /usr/local/bin/verusd
