@@ -32,7 +32,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     tmux select-layout tiled
     tmux select-pane -T daemons
     if [ "$1" = 1 ]; then
-        ./3p_start_coins.sh
+        ./start_coins.sh
     fi
 
 #tmux select-pane -T title1
@@ -65,7 +65,7 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
     #tmux select-layout tiled
 
     if [ "$1" = 1 ]; then
-        ./main_start_coins.sh
+        ./start_coins.sh
     fi
 
 #tmux select-pane -T title1
