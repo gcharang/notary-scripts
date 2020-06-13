@@ -4,7 +4,10 @@
 set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
-
+if [ -f ./src/bitcoind ]; then
+    git reset --hard
+    git clean -fdx
+fi
 berkeleydb() {
     BITCOIN_ROOT=$(pwd)
     BITCOIN_PREFIX="${BITCOIN_ROOT}/db4"
@@ -35,10 +38,6 @@ EOL
     cd $BITCOIN_ROOT
 }
 buildBITCOIN() {
-    if [ -f ./src/bitcoind ]; then
-        git reset --hard
-        git clean -fdx
-    fi
     ./autogen.sh
     ./configure LDFLAGS="-L${BITCOIN_PREFIX}/lib/" CPPFLAGS="-I${BITCOIN_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)

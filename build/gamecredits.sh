@@ -4,7 +4,10 @@
 set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
-
+if [ -f ./src/gamecreditsd ]; then
+    git reset --hard
+    git clean -fdx
+fi
 berkeleydb() {
     GAMECREDITS_ROOT=$(pwd)
     GAMECREDITS_PREFIX="${GAMECREDITS_ROOT}/db4"
@@ -59,10 +62,6 @@ OpenSSL() {
     # starting gamecreditsd.
 }
 buildGAME() {
-    if [ -f ./src/gamecreditsd ]; then
-        git reset --hard
-        git clean -fdx
-    fi
     ./autogen.sh
     ./configure --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)

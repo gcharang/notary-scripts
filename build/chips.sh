@@ -6,6 +6,11 @@ set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
 
+if [ -f ./src/chipsd ]; then
+    git reset --hard
+    git clean -fdx
+fi
+
 berkeleydb() {
     CHIPS_ROOT=$(pwd)
     CHIPS_PREFIX="${CHIPS_ROOT}/db4"
@@ -37,10 +42,6 @@ EOL
 }
 
 buildCHIPS() {
-    if [ -f ./src/chipsd ]; then
-        git reset --hard
-        git clean -fdx
-    fi
     ./autogen.sh
     ./configure LDFLAGS="-L${CHIPS_PREFIX}/lib/" CPPFLAGS="-I${CHIPS_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)

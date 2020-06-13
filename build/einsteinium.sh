@@ -4,7 +4,10 @@
 set -euxo pipefail
 # https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 #set -e
-
+if [ -f ./src/einsteiniumd ]; then
+    git reset --hard
+    git clean -fdx
+fi
 berkeleydb() {
     EMC2_ROOT=$(pwd)
     EMC2_PREFIX="${EMC2_ROOT}/db4"
@@ -36,10 +39,6 @@ EOL
 }
 
 buildEMC2() {
-    if [ -f ./src/einsteiniumd ]; then
-        git reset --hard
-        git clean -fdx
-    fi
     ./autogen.sh
     ./configure LDFLAGS="-L${EMC2_PREFIX}/lib/" CPPFLAGS="-I${EMC2_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared
     make -j$(nproc)
