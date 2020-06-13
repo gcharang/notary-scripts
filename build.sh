@@ -443,7 +443,7 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 		komodod &
 		#echo "Waiting 6 minutes to give the daemons time to startup properly"
 		#sleep 360
-		cd ~/komodo/src
+		cd ~/dPoW/iguana
 		./assetchains.old
 		echo "Waiting 10 minutes to give the daemons time to startup properly"
 		sleep 600

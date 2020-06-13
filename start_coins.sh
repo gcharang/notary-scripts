@@ -11,7 +11,7 @@ elif [ "$main" = false ] && [ "$third_party" = false ]; then
     echo 'Please update config to set atleast one of "main" or "third_party" to be true'
 elif [ "$main" = false ] && [ "$third_party" = true ]; then
     cp -f ~/dPoW/iguana/pubkey.txt ~/komodo/src/pubkey.txt
-    source ~/komodo/src/pubkey.txt
+    source ~/dPoW/iguana/pubkey.txt
     chipsd -pubkey=$pubkey &
     gamecreditsd -pubkey=$pubkey &
     einsteiniumd -pubkey=$pubkey &
@@ -25,7 +25,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 elif [ "$main" = true ] && [ "$third_party" = false ]; then
     cp -f ~/dPoW/iguana/pubkey.txt ~/komodo/src/pubkey.txt
 
-    source ~/komodo/src/pubkey.txt
+    source ~/dPoW/iguana/pubkey.txt
 
     bitcoind &
 
@@ -33,8 +33,8 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
     komodod -gen -genproclimit=1 -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     #komodod -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     sleep 600
-    cd komodo/src
-    ./assetchains
+    cd ~/dPoW/iguana
+    ./assetchains.old
 else
     echo "Please check your config file"
 fi
