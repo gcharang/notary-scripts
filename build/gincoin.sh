@@ -37,7 +37,8 @@ EOL
 
 buildGIN() {
     if [ -f ./src/gincoind ]; then
-        make clean
+        git reset --hard
+        git clean -fdx
     fi
     ./autogen.sh
     ./configure LDFLAGS="-L${GIN_PREFIX}/lib/" CPPFLAGS="-I${GIN_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared --without-gui

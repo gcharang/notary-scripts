@@ -37,7 +37,8 @@ EOL
 
 buildEMC2() {
     if [ -f ./src/einsteiniumd ]; then
-        make clean
+        git reset --hard
+        git clean -fdx
     fi
     ./autogen.sh
     ./configure LDFLAGS="-L${EMC2_PREFIX}/lib/" CPPFLAGS="-I${EMC2_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared

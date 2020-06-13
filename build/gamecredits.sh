@@ -60,7 +60,8 @@ OpenSSL() {
 }
 buildGAME() {
     if [ -f ./src/gamecreditsd ]; then
-        make clean
+        git reset --hard
+        git clean -fdx
     fi
     ./autogen.sh
     ./configure --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared

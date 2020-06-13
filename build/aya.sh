@@ -36,7 +36,8 @@ EOL
 }
 buildAYA() {
     if [ -f ./src/aryacoind ]; then
-        make clean
+        git reset --hard
+        git clean -fdx
     fi
     ./autogen.sh
     ./configure LDFLAGS="-L${AYA_PREFIX}/lib/" CPPFLAGS="-I${AYA_PREFIX}/include/" --with-gui=no --disable-tests --disable-bench --without-miniupnpc --enable-experimental-asm --enable-static --disable-shared --with-incompatible-bdb
