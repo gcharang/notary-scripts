@@ -25,6 +25,7 @@ echo "BTC/USD: ${USD}" >>~/btc_split.log
 echo "Our fee(per byte): ${TXFEE_SATOSHI_BYTE}" >>~/btc_split.log
 
 UTXOs=$(curl -s "https://blockchain.info/unspent?active=${NN_ADDRESS}&limit=999" | jq '.unspent_outputs|[map(select(( (.value|tonumber) != 10000)))| .[] | {tx_hash_big_endian, tx_output_n, value,script}]')
+numNotaUTXOs=$(curl -s "https://blockchain.info/unspent?active=${NN_ADDRESS}&limit=999" | jq '.unspent_outputs|[map(select(( (.value|tonumber) = 10000)))| .[] ] | length')
 
 SPLIT_VALUE=0.0001
 COINAGE_TOTAL_SATOSHI=0
@@ -33,6 +34,11 @@ SPLIT_VALUE_SATOSHI=("$(printf "%.0f" ${SPLIT_VALUE_SATOSHI})")
 SPLIT_TOTAL=$(bc <<<"${SPLIT_VALUE}*${SPLIT_COUNT}")
 SPLIT_TOTAL_SATOSHI=$(bc <<<"${SPLIT_VALUE}*${SPLIT_COUNT}*100000000")
 SPLIT_TOTAL_SATOSHI=("$(printf "%.0f" ${SPLIT_TOTAL_SATOSHI})")
+
+if [[ $numNotaUTXOs -gt 300 ]]; then
+	echo "Have: ${numNotaUTXOs} notaUTXOs" >>~/btc_split.log
+	exit 1
+fi
 
 if [[ $UTXOs != "[]" ]]; then
 	for txid in $(jq -r '.[].tx_hash_big_endian' <<<"${UTXOs}"); do txids+=("$txid"); done
