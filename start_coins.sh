@@ -28,6 +28,9 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
     komodod -gen -genproclimit=1 -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     #komodod -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     cd ~/dPoW/iguana
+    chmod +x assetchains.old
+    cp -f assetchains.old ~/komodo/src
+    cd ~/komodo/src
     ./assetchains.old
 else
     echo "Please check your config file"
