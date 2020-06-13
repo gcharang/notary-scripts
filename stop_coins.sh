@@ -15,12 +15,13 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     chips-cli stop
     gamecredits-cli stop
     einsteinium-cli stop
-    gincoin-cli stop
+    #gincoin-cli stop
     aryacoin-cli stop
+    komodo-cli -ac_name=VRSC stop
 elif [ "$main" = true ] && [ "$third_party" = false ]; then
     komodo-cli stop
     bitcoin-cli stop
-    komodo-cli -ac_name=VRSC stop
+
     cd ~/komodo/src
     ./fiat-cli stop
 else

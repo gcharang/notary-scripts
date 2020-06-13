@@ -83,6 +83,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git clone https://github.com/KomodoPlatform/komodo -b master
 			cd komodo
 		fi
+		git checkout 0.6.0
 		./zcutil/fetch-params.sh
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building KOMODO!"
@@ -113,6 +114,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git clone https://github.com/sillyghost/AYAv2.git -b master
 
 		fi
+		git checkout fd94422
 		cd $SCRIPT_DIR
 		cp ./build/aya.sh ~/AYAv2/build.sh
 		cd ~/AYAv2

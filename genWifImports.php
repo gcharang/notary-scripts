@@ -141,9 +141,12 @@ $coins = Array(
     Array("name" => "BTC",  "PUBKEY_ADDRESS" =>  0, "SECRET_KEY" => 128 , "cli" => "bitcoin-cli"),
     Array("name" => "KMD",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "komodo-cli"),
     Array("name" => "GAME", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 166, "cli" => "gamecredits-cli"),
-    Array("name" => "HUSH", "PUBKEY_ADDRESS" => Array(0x1C,0xB8), "SECRET_KEY" => 0x80, "cli" => "hush-cli"),
+    //Array("name" => "HUSH", "PUBKEY_ADDRESS" => Array(0x1C,0xB8), "SECRET_KEY" => 0x80, "cli" => "hush-cli"),
+    Array("name" => "HUSH",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "hush-cli"),
+    Array("name" => "VRSC",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "verus"),
+    //Array("name" => "MCL",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "komodo-cli -ac_name=MCL"),
     Array("name" => "EMC2", "PUBKEY_ADDRESS" => 33, "SECRET_KEY" => 176, "cli" => "einsteinium-cli"),
-    Array("name" => "GIN", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 198, "cli" => "gincoin-cli"),
+   // Array("name" => "GIN", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 198, "cli" => "gincoin-cli"),
     Array("name" => "AYA", "PUBKEY_ADDRESS" => 23, "SECRET_KEY" => 176, "cli" => "aryacoin-cli"),
 );
 
