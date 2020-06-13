@@ -35,6 +35,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d dPoW ]; then
 			cd dPoW
+			git reset --hard
 			git checkout s4
 			git pull
 			cd iguana
