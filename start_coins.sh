@@ -30,8 +30,8 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
     bitcoind &
 
     sleep 60
-    #komodod -gen -genproclimit=1 -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
-    komodod -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
+    komodod -gen -genproclimit=1 -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
+    #komodod -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     sleep 600
     cd komodo/src
     ./assetchains

@@ -18,7 +18,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
         eval $ufw_command
     done
 elif [ "$main" = true ] && [ "$third_party" = false ]; then
-    readarray -t kmd_coins < <(curl -s https://raw.githubusercontent.com/KomodoPlatform/dPoW/dev/iguana/assetchains.json | jq -r '[.[].ac_name] | join("\n")')
+    readarray -t kmd_coins < <(curl -s https://raw.githubusercontent.com/KomodoPlatform/dPoW/s4/iguana/assetchains.json | jq -r '[.[].ac_name] | join("\n")')
     kmd_coins+=(KMD)
     sudo ufw allow 17775/tcp comment "iguana main server port"
     for coin in "${kmd_coins[@]}"; do
