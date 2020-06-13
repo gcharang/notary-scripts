@@ -14,12 +14,12 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     tmux new-window -n 'tails'
     tmux select-pane -t 0
     tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
-    tmux select-pane -t 0
-    tmux split-window -h -t 0 'tmux select-pane -T MCL && tail -f ~/.komodo/MCL/debug.log'
+    #tmux select-pane -t 0
+    #tmux split-window -h -t 0 'tmux select-pane -T MCL && tail -f ~/.komodo/MCL/debug.log'
     tmux select-pane -t 0
     tmux split-window -v -t 0 'tmux select-pane -T GAME && tail -f ~/.gamecredits/debug.log'
     tmux select-pane -t 0
-    tmux split-window -v -t 0 'tmux select-pane -T GIN && tail -f ~/.gincoincore/debug.log'
+    tmux split-window -v -p 25 -t 0 'tmux select-pane -T VRSC && tail -f ~/.komodo/VRSC/debug.log'
     tmux select-pane -t 0
     tmux split-window -v -t 0 'tmux select-pane -T CHIPS && tail -f ~/.chips/debug.log'
     tmux select-pane -t 0
@@ -57,8 +57,6 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 
     #multitail --mergeall --no-repeat --follow-all --label "[KMD]" ~/.komodo/debug.log --label "[BTC]" ~/.bitcoin/debug.log
 
-    tmux select-pane -t 0
-    tmux split-window -v -p 25 -t 0 'tmux select-pane -T VRSC && tail -f ~/.komodo/VRSC/debug.log'
     tmux select-pane -t 0
     tmux split-window -v -p 40 -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
     tmux select-pane -t 0
