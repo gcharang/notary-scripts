@@ -126,7 +126,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		if [ -d hush3 ]; then
 			cd hush3
 			if [ -f ./src/hushd ]; then
-				make clean
+			#	make clean
 			fi
 			git checkout master
 			git pull
