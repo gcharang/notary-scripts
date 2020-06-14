@@ -32,13 +32,8 @@ function log_print() {
 	echo -e [$datetime] $1
 }
 function dosplit() {
-	if [ ! -z $i ] && [ $i != "KMD" ]; then
-		coin=$1
-		asset=" -ac_name=$i"
-	else
-		coin="KMD"
-		asset=""
-	fi
+	coin=$1
+	asset=$2
 	utxo=$($komodo_cli $asset listunspent | jq "[.[] | select (.generated==false and .amount==0.0001 and .spendable==true and (.scriptPubKey == \"$NN_PUBKEY\"))] | length")
 	if [ -n "$utxo" ] && [ "$utxo" -eq "$utxo" ] 2>/dev/null; then
 		if [[ $utxo -lt $utxo_min ]]; then
@@ -85,7 +80,7 @@ log_print "Starting Split ..."
 #	dosplit $i
 #done
 cd ~/dPoW/iguana
-dosplit "KMD"
+dosplit "KMD" ""
 ./listassetchains | while read chain; do
-	dosplit $chain
+	dosplit $chain "-ac_name=${chain}"
 done
