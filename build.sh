@@ -75,9 +75,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~
 		if [ -d komodo ]; then
 			cd komodo
-			if [ -f ./src/komodod ]; then
-				make clean
-			fi
+			git reset --hard
+			git clean -fdx
 			git checkout master
 			git pull
 		else
@@ -315,11 +314,10 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 	SYNC() {
 		verusd &
 		chipsd &
-		gamecreditsd &
+		#gamecreditsd &
 		einsteiniumd &
-		#gincoind &
 		komodod &
-		hushd &
+		#hushd &
 		aryacoind &
 		#~/Marmara-v.1.0/src/komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 &
 	}
@@ -329,9 +327,9 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		IGUANA
 		KOMODO
 		AYA
-		HUSH
+		#HUSH
 		CHIPS
-		GAME
+		#GAME
 		EMC2
 		#GIN
 		#MCL
@@ -379,10 +377,10 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 			pubkey=$pubkey
 		EOF
 
-		cat <<-EOF >wp_7779
-			curl --url "http://127.0.0.1:7779" --data "{\"method\":\"walletpassphrase\",\"params\":[\"$passphrase\", 9999999]}"
+		cat <<-EOF >wp_7776
+			curl --url "http://127.0.0.1:7776" --data "{\"method\":\"walletpassphrase\",\"params\":[\"$passphrase\", 9999999]}"
 		EOF
-		chmod 700 wp_7779
+		chmod 700 wp_7776
 		./m_notary_build
 	}
 
@@ -406,9 +404,8 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 		cd ~
 		if [ -d komodo ]; then
 			cd komodo
-			if [ -f ./src/komodod ]; then
-				make clean
-			fi
+			git reset --hard
+			git clean -fdx
 			git checkout master
 			git pull
 		else
