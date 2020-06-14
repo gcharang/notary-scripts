@@ -1,3 +1,5 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
-0 12 * * * $HOME/notary-scripts/btcSplit.sh >> $HOME/btc_split.log 2>&1
+0 12 * * * $HOME/notary-scripts/btcSplit.sh >> $HOME/cron.log 2>&1
+5 12 * * * $HOME/notary-scripts/consolidate-kmd.sh >> $HOME/cron.log 2>&1
+5 12 * * * $HOME/notary-scripts/kmd-assetSplit.sh >> $HOME/cron.log 2>&1

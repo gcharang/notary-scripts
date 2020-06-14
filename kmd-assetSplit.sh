@@ -2,7 +2,7 @@
 #set -exuo pipefail
 source ~/notary-scripts/config
 nAddress=$kmd_address
-NN_PUBKEY=$pubkey
+NN_PUBKEY="21{$pubkey}ac"
 date=$(date +'%Y-%m-%d %H:%M:%S')
 
 source $HOME/.profile
