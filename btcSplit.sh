@@ -4,6 +4,9 @@
 
 source ~/notary-scripts/config
 
+echo "*********************************************************"
+date=$(date +'%Y-%m-%d %H:%M:%S')
+echo $date
 NN_ADDRESS=$btc_address # fill your NN address here
 NN_PUBKEY=$pubkey       # fill your pubkey here
 SPLIT_COUNT=250         # 253 total ins and outs is bitcoin-cli max
@@ -18,6 +21,7 @@ USD=$(jq -r '.data.market_price_usd' <<<"${chair}")
 TXFEE_SATOSHI_BYTE=$(bc <<<"${chairfee} + 1")
 if [[ $TXFEE_SATOSHI_BYTE -gt 65 ]]; then
 	echo "Fees too high now: ${TXFEE_SATOSHI_BYTE}"
+	echo "*********************************************************"
 	exit 1
 fi
 echo "There are currently ${inpool} txes in the mempool"
@@ -38,6 +42,7 @@ SPLIT_TOTAL_SATOSHI=("$(printf "%.0f" ${SPLIT_TOTAL_SATOSHI})")
 if [[ $numNotaUTXOs -gt 300 ]]; then
 	echo "Have: ${numNotaUTXOs} notaUTXOs"
 	exit 1
+	echo "*********************************************************"
 fi
 
 if [[ $UTXOs != "[]" ]]; then
@@ -91,7 +96,9 @@ if [[ $UTXOs != "[]" ]]; then
 	echo -e "\033[33mSplit TX: ${lasttx}\033[0m"
 	echo -e "\n"
 	exit 0
+	echo "*********************************************************"
 else
 	echo -e "ERROR!\n Nothing to split ... :("
 	exit 1
+	echo "*********************************************************"
 fi
