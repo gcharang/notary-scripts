@@ -3,15 +3,13 @@
 source ~/notary-scripts/config
 nAddress=$kmd_address
 NN_PUBKEY=$pubkey
-utxo_min=35
-utxo_max=60
 date=$(date +'%Y-%m-%d %H:%M:%S')
 
 source $HOME/.profile
 # CONFIG
 komodo_cli=/usr/local/bin/komodo-cli
-utxo_min=35
-utxo_max=60
+utxo_min=70
+utxo_max=100
 iguana_port=7776
 
 function init_colors() {

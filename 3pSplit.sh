@@ -3,17 +3,30 @@
 # 3rd party Splitfund Script
 # (c) Decker, 2018-2019
 
+#!/bin/bash
+#set -exuo pipefail
+source ~/notary-scripts/config
+nAddress=$kmd_address
+# all you need is to insert your pubkey here in lock script format: 21{YOUR_33_BYTES_HEX_PUBKEY}AC
+NN_PUBKEY="21${pubkey}ac"
+utxo_min=70
+utxo_max=100
+date=$(date +'%Y-%m-%d %H:%M:%S')
+
+source $HOME/.profile
+# CONFIG
+komodo_cli=/usr/local/bin/komodo-cli
+iguana_port=7779
+
 declare -A coins
 coins[BTC]=/usr/local/bin/bitcoin-cli
 coins[CHIPS]=$HOME/chips3/src/chips-cli
-coins[GAME]=$HOME/GameCredits/src/gamecredits-cli
+#coins[GAME]=$HOME/GameCredits/src/gamecredits-cli
 coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
-coins[HUSH]=$HOME/hush/src/hush-cli
+#coins[HUSH]=$HOME/hush/src/hush-cli
 coins[VRSC]=/usr/local/bin/verus
+coins[AYA]=/usr/local/bin/aryacoin-cli
 # declare -A coins=( [BTC]=/usr/local/bin/bitcoin-cli [GAME]=$HOME/GameCredits/src/gamecredits-cli ) # example of one-line array init
-
-# all you need is to insert your pubkey here in lock script format: 21{YOUR_33_BYTES_HEX_PUBKEY}AC
-NN_PUBKEY=2100deadcafedeadcafedeadcafedeadcafedeadcafedeadcafedeadcafedeadcafeac
 
 # script check the condition if utxo_count < utxo_min then append it to utxo_max,
 # small example: utxo_min = 100; utxo_max = 100; if you have 90 utxo (90 < utxo_min)
@@ -22,9 +35,6 @@ NN_PUBKEY=2100deadcafedeadcafedeadcafedeadcafedeadcafedeadcafedeadcafedeadcafeac
 # every splitfunds tx is signed and trying to broadcast by iguana, then it checks by daemon,
 # if tx failed to broadcast (not in chain) it resigned by daemon and broadcast to network.
 # very simple solution until we fix internal iguana splitfund sign.
-
-utxo_min=70
-utxo_max=100
 
 # --------------------------------------------------------------------------
 function init_colors() {
@@ -55,7 +65,7 @@ function do_autosplit() {
 		komodo_cli=$2
 		asset=""
 		# setting the split amounts
-		if [ $coin == 'GAME' ] || [ $coin == 'EMC2' ]; then
+		if [ $coin == 'GAME' ] || [ $coin == 'EMC2' ] || [ $coin == 'AYA' ]; then
 			satoshis=100000
 			amount=0.001
 		else
@@ -117,7 +127,7 @@ function do_autosplit() {
 
 init_colors
 log_print "Starting autosplit ..."
-
+do_autosplit "KMD" "/usr/local/bin/komodo-cli"
 for i in "${!coins[@]}"; do # access the keys with ${!array[@]}
 	# key - $i, value - ${coins[$i]}
 	do_autosplit $i ${coins[$i]}
