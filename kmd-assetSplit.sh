@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exuo pipefail
+#set -exuo pipefail
 source ~/notary-scripts/config
 nAddress=$kmd_address
 NN_PUBKEY=$pubkey
