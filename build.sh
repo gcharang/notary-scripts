@@ -116,7 +116,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git pull
 		else
 			git clone https://github.com/sillyghost/AYAv2.git -b master
-
+			cd AYAv2
 		fi
 		git checkout fd94422
 		cd $SCRIPT_DIR
@@ -174,6 +174,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git pull
 		else
 			git clone https://github.com/jl777/chips3 -b master
+			cd chips3
 		fi
 		git checkout 31d59f9
 		cd $SCRIPT_DIR
@@ -206,6 +207,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git pull
 		else
 			git clone https://github.com/gamecredits-project/GameCredits -b master
+			cd GameCredits
 		fi
 		git checkout 025f105
 		cd $SCRIPT_DIR
@@ -238,6 +240,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git pull
 		else
 			git clone https://github.com/emc2foundation/einsteinium -b master
+			cd einsteinium
 		fi
 		git checkout 70d7dc2
 		cd $SCRIPT_DIR
@@ -256,8 +259,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		else
 			git clone https://github.com/marmarachain/Marmara-v.1.0 -b master
 			cd Marmara-v.1.0
-			git checkout 9013c5cb1bc88cf5db5910e4f251f56757385f5f
 		fi
+		git checkout 9013c5cb1bc88cf5db5910e4f251f56757385f5f
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building MCL!"
 	}
@@ -410,9 +413,10 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 		if [ -d bitcoin ]; then
 			cd bitcoin
 			git checkout 0.16
+			git pull
 		else
 			git clone https://github.com/bitcoin/bitcoin -b 0.16
-
+			cd bitcoin
 		fi
 		cd $SCRIPT_DIR
 		cp ./build/bitcoin.sh ~/bitcoin/build.sh
