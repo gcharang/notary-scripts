@@ -10,7 +10,7 @@ echo "merged $toSend coins in $txid"
 ./listassetchains | while read chain; do
     echo $chain
     balance=$(komodo-cli -ac_name=$chain getbalance)
-    toSend=$(echo "$balance - 0.0001" | bc)
+    toSend=$(echo "$balance - 0.004" | bc)
     txid=$(komodo-cli -ac_name=$chain sendtoaddress $kmd_address $toSend)
     echo "merged $toSend coins in $txid"
 done
