@@ -5,7 +5,7 @@ source config
 echo "KMD"
 balance=$(komodo-cli getbalance)
 balance=$(echo "$balance/1" | bc)
-toSend=$((balance - 0.0001))
+toSend=$(echo "balance - 0.0001" | bc)
 txid=$(komodo-cli sendtoaddress $kmd_address $toSend)
 echo "merged $toSend coins in $txid"
 ./listassetchains | while read chain; do
