@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -exuo pipefail
 source ~/notary-scripts/config
 nAddress=$kmd_address
 NN_PUBKEY=$pubkey
@@ -79,13 +79,13 @@ function dosplit() {
 	fi
 }
 init_colors
-log_print "Starting merge_clean_split ..."
+log_print "Starting Split ..."
 
 #for i in "${kmd_coins[@]}"; do
 #	dosplit $i
 #done
 cd ~/dPoW/iguana
-
+dosplit "KMD"
 ./listassetchains | while read chain; do
 	dosplit $chain
 done
