@@ -36,7 +36,8 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		if [ -d dPoW ]; then
 			cd dPoW
 			git reset --hard
-			git checkout s4
+			git clean -fdx
+			git checkout master
 			git pull
 			cd iguana
 		else
@@ -83,7 +84,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 			git clone https://github.com/KomodoPlatform/komodo -b master
 			cd komodo
 		fi
-		git checkout b998ca1
+		git checkout e159b4e
 		./zcutil/fetch-params.sh
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building KOMODO!"
@@ -244,38 +245,6 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		cd ~/einsteinium
 		./build.sh
 	}
-
-	GIN() {
-		mkdir -p ~/.gincoincore
-		if [ ! -f ~/.gincoincore/gincoincore.conf ]; then
-			cat <<-EOF >~/.gincoincore/gincoincore.conf
-				server=1
-				daemon=1
-				txindex=1
-				rpcuser=user
-				rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-				bind=127.0.0.1
-				rpcbind=127.0.0.1
-				rpcallowip=127.0.0.1
-			EOF
-		fi
-		chmod 600 ~/.gincoincore/gincoincore.conf
-		cd ~
-		if [ -d gincoin-core ]; then
-			cd gincoin-core
-			git reset --hard
-			git clean -fdx
-			git checkout master
-			git pull
-		else
-			git clone https://github.com/GIN-coin/gincoin-core -b master
-		fi
-		cd $SCRIPT_DIR
-		cp ./build/gincoin.sh ~/gincoin-core/build.sh
-		cd ~/gincoin-core
-		./build.sh
-	}
-
 	MCL() {
 		cd ~
 		if [ -d Marmara-v.1.0 ]; then
@@ -365,7 +334,9 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 		cd ~
 		if [ -d dPoW ]; then
 			cd dPoW
-			git checkout s4
+			git reset --hard
+			git clean -fdx
+			git checkout master
 			git pull
 			cd iguana
 		else
@@ -412,7 +383,7 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 			git clone https://github.com/KomodoPlatform/komodo -b master
 			cd komodo
 		fi
-		git checkout b998ca1
+		git checkout e159b4e
 		./zcutil/fetch-params.sh
 		./zcutil/build.sh -j$(nproc)
 		echo "Done building KOMODO!"
