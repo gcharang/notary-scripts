@@ -71,6 +71,16 @@ function dosplit() {
 		log_print "${BRIGHT}\x5b${RESET}${YELLOW}${coin}${RESET}${BRIGHT}\x5d${RESET} ${RED}Error: utxo count is not a number, may be daemon dead ... ${RESET}"
 	fi
 }
+
+function cleanwallettransactions() {
+	coin=$1
+	asset=$2
+	result=$($komodo_cli $asset cleanwallettransactions)
+	result_formatted=$(echo $result | jq -r '"Total Tx: \(.total_transactons) | Remaining Tx: \(.remaining_transactons) | Removed Tx: \(.removed_transactions)"')
+
+	echo "[$coin] ${date} | $result_formatted"
+}
+
 init_colors
 log_print "Starting Split ..."
 
@@ -79,6 +89,8 @@ log_print "Starting Split ..."
 #done
 cd ~/dPoW/iguana
 dosplit "KMD" ""
+cleanwallettransactions "KMD" ""
 ./listassetchains | while read chain; do
 	dosplit $chain "-ac_name=${chain}"
+	cleanwallettransactions $chain "-ac_name=${chain}"
 done

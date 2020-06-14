@@ -19,10 +19,10 @@ index 69e879e..e5a35b9 100644
 ```
 
 Notary script repos for reference:
-- https://github.com/gcharang/nntools
+- https://github.com/webworker01/nntools
 - https://github.com/MrMLynch/nnutils
 
-The scripts in this repo work for Debian 10
+The scripts in this repo work in Debian 10
 
 ## For both Main and 3P server
 
