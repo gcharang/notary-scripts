@@ -41,8 +41,8 @@ SPLIT_TOTAL_SATOSHI=("$(printf "%.0f" ${SPLIT_TOTAL_SATOSHI})")
 
 if [[ $numNotaUTXOs -gt 300 ]]; then
 	echo "Have: ${numNotaUTXOs} notaUTXOs"
-	exit 1
 	echo "*********************************************************"
+	exit 1
 fi
 
 if [[ $UTXOs != "[]" ]]; then
@@ -95,10 +95,10 @@ if [[ $UTXOs != "[]" ]]; then
 	lasttx=$(bitcoin-cli -stdin sendrawtransaction <<<${Signed})
 	echo -e "\033[33mSplit TX: ${lasttx}\033[0m"
 	echo -e "\n"
-	exit 0
 	echo "*********************************************************"
+	exit 0
 else
 	echo -e "ERROR!\n Nothing to split ... :("
-	exit 1
 	echo "*********************************************************"
+	exit 1
 fi
