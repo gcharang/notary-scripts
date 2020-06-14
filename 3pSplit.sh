@@ -19,7 +19,7 @@ komodo_cli=/usr/local/bin/komodo-cli
 iguana_port=7779
 
 declare -A coins
-coins[BTC]=/usr/local/bin/bitcoin-cli
+
 coins[CHIPS]=$HOME/chips3/src/chips-cli
 #coins[GAME]=$HOME/GameCredits/src/gamecredits-cli
 coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
@@ -28,7 +28,7 @@ coins[VRSC]=/usr/local/bin/verus
 coins[AYA]=/usr/local/bin/aryacoin-cli
 # declare -A coins=( [BTC]=/usr/local/bin/bitcoin-cli [GAME]=$HOME/GameCredits/src/gamecredits-cli ) # example of one-line array init
 
-# script check the condition if utxo_count < utxo_min then append it to utxo_max,
+# script checks the condition if utxo_count < utxo_min then append it to utxo_max,
 # small example: utxo_min = 100; utxo_max = 100; if you have 90 utxo (90 < utxo_min)
 # script will spilt additional 10 utxos to have utxo_max (100).
 
