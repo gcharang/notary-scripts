@@ -11,6 +11,6 @@ echo "merged $toSend coins in $txid"
     echo $chain
     balance=$(komodo-cli -ac_name=$chain getbalance)
     toSend=$(echo "$balance - 0.004" | bc)
-    txid=$(komodo-cli -ac_name=$chain sendtoaddress $kmd_address $toSend)
+    txid=$(komodo-cli -ac_name=$chain sendtoaddress $kmd_address 0${toSend})
     echo "merged $toSend coins in $txid"
 done
