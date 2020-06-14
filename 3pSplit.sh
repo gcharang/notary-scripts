@@ -9,8 +9,8 @@ source ~/notary-scripts/config
 nAddress=$kmd_address
 # all you need is to insert your pubkey here in lock script format: 21{YOUR_33_BYTES_HEX_PUBKEY}AC
 NN_PUBKEY="21${pubkey}ac"
-utxo_min=70
-utxo_max=100
+utxo_min=40
+utxo_max=50
 date=$(date +'%Y-%m-%d %H:%M:%S')
 
 source $HOME/.profile

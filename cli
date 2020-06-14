@@ -1,0 +1,42 @@
+#!/bin/bash
+
+args="$@"
+
+source config
+
+if [ "$main" = true ] && [ "$third_party" = true ]; then
+    echo 'Please update config to set only one of "main" or "third_party" to be true'
+elif [ "$main" = false ] && [ "$third_party" = false ]; then
+    echo 'Please update config to set atleast one of "main" or "third_party" to be true'
+elif [ "$main" = false ] && [ "$third_party" = true ]; then
+    echo "KMD"
+    komodo-cli $args
+
+    #echo "HUSH"
+    #hush-cli $args
+
+    echo "CHIPS"
+    chips-cli $args
+
+    #echo "GAME"
+    #gamecredits-cli $args
+
+    echo "EMC2"
+    einsteinium-cli $args
+
+    echo "AYA"
+    aryacoin-cli $args
+
+    echo "VRSC"
+    verus $args
+elif [ "$main" = true ] && [ "$third_party" = false ]; then
+    cd ~/dPoW/iguana
+    echo "KMD"
+    komodo-cli $args
+    ./listassetchains | while read chain; do
+        echo $chain
+        komodo-cli --ac_name=$chain $args
+    done
+else
+    echo "Please check your config file"
+fi
