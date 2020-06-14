@@ -4,8 +4,8 @@ source config
 cd ~/dPoW/iguana
 echo "KMD"
 balance=$(komodo-cli getbalance)
-toSend=$(echo "$balance - 0.0001" | bc)
-txid=$(komodo-cli sendtoaddress $kmd_address $toSend)
+toSend=$(echo "$balance - 0.003" | bc)
+txid=$(komodo-cli sendtoaddress $kmd_address 0${toSend})
 echo "merged $toSend coins in $txid"
 ./listassetchains | while read chain; do
     echo $chain
