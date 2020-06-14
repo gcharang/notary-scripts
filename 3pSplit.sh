@@ -15,7 +15,6 @@ date=$(date +'%Y-%m-%d %H:%M:%S')
 
 source $HOME/.profile
 # CONFIG
-komodo_cli=/usr/local/bin/komodo-cli
 iguana_port=7779
 
 declare -A coins
@@ -83,8 +82,8 @@ function do_autosplit() {
 				need=$(($utxo_max - $utxo))
 				log_print "${BRIGHT}\x5b${RESET}${YELLOW}${coin}${RESET}${BRIGHT}\x5d${RESET} have.${utxo} --> add.${need} --> total.${utxo_max}"
 				# /home/decker/SuperNET/iguana/acsplit $i $need
-				log_print "${DARKGREY}curl -s --url \"http://127.0.0.1:7776\" --data '{\"coin\":\"${coin}\",\"agent\":\"iguana\",\"method\":\"splitfunds\",\"satoshis\":\"${satoshis}\",\"sendflag\":1,\"duplicates\":\"${need}\"}'${RESET}"
-				splitres=$(curl -s --url "http://127.0.0.1:7776" --data "{\"coin\":\""${coin}"\",\"agent\":\"iguana\",\"method\":\"splitfunds\",\"satoshis\":\"${satoshis}\",\"sendflag\":1,\"duplicates\":"${need}"}")
+				log_print "${DARKGREY}curl -s --url \"http://127.0.0.1:${iguana_port}\" --data '{\"coin\":\"${coin}\",\"agent\":\"iguana\",\"method\":\"splitfunds\",\"satoshis\":\"${satoshis}\",\"sendflag\":1,\"duplicates\":\"${need}\"}'${RESET}"
+				splitres=$(curl -s --url "http://127.0.0.1:${iguana_port}" --data "{\"coin\":\""${coin}"\",\"agent\":\"iguana\",\"method\":\"splitfunds\",\"satoshis\":\"${satoshis}\",\"sendflag\":1,\"duplicates\":"${need}"}")
 				#splitres='{"result":"hexdata","txid":"d5aedd61710db60181a1d34fc9a84c9333ec17509f12c1d67b29253f66e7a88c","completed":true,"tag":"5009274800182462270"}'
 				error=$(echo $splitres | jq -r .error)
 				txid=$(echo $splitres | jq -r .txid)
