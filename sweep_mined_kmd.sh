@@ -8,7 +8,7 @@
 cd ~/notary-scripts
 source config
 coin="KMD"
-address=$kmd_address
+address=$kmd_cold_address
 cli="komodo-cli"
 txfee="0.0002"
 date=$(date +%Y-%m-%d:%H:%M:%S)

@@ -3,6 +3,7 @@ pubkey=<REPLACE_PUBKEY_3P_OR_MAIN>
 main=false # change to "true" on main server
 third_party=false # change to "true" on 3p server
 kmd_address=Rxxxxx # replace
+kmd_cold_address=Rxxxxx # replace
 btc_address=1xxxxxx # replace
 aya_address=Axxxxxx # replace
 emc2_address=Exxxxxx # replace
