@@ -8,8 +8,6 @@ date=$(date +'%Y-%m-%d %H:%M:%S')
 source $HOME/.profile
 # CONFIG
 komodo_cli=/usr/local/bin/komodo-cli
-utxo_min=70
-utxo_max=100
 iguana_port=7776
 
 function init_colors() {
@@ -33,6 +31,7 @@ function log_print() {
 function merge_coins() {
 	coin=$1
 	asset=$2
+
 	echo "----------------------------------------"
 	echo "Merging UTXO's of $coin - ${date}"
 	echo "----------------------------------------"
@@ -69,6 +68,8 @@ function cleanwallettransactions() {
 function dosplit() {
 	coin=$1
 	asset=$2
+	utxo_min=$3
+	utxo_max=$4
 	utxo=$($komodo_cli $asset listunspent | jq "[.[] | select (.generated==false and .amount==0.0001 and .spendable==true and (.scriptPubKey == \"$NN_PUBKEY\"))] | length")
 	if [ -n "$utxo" ] && [ "$utxo" -eq "$utxo" ] 2>/dev/null; then
 		if [[ $utxo -lt $utxo_min ]]; then
@@ -117,9 +118,9 @@ log_print "Starting Merge Clean Split ..."
 cd ~/dPoW/iguana
 merge_coins "KMD" ""
 cleanwallettransactions "KMD" ""
-dosplit "KMD" ""
+dosplit "KMD" "" 70 100
 ./listassetchains | while read chain; do
 	merge_coins $chain "-ac_name=${chain}"
 	cleanwallettransactions $chain "-ac_name=${chain}"
-	dosplit $chain "-ac_name=${chain}"
+	dosplit $chain "-ac_name=${chain}" 10 20
 done
