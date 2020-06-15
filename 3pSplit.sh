@@ -9,8 +9,6 @@ source ~/notary-scripts/config
 nAddress=$kmd_address
 # all you need is to insert your pubkey here in lock script format: 21{YOUR_33_BYTES_HEX_PUBKEY}AC
 NN_PUBKEY="21${pubkey}ac"
-utxo_min=20
-utxo_max=40
 date=$(date +'%Y-%m-%d %H:%M:%S')
 
 source $HOME/.profile
@@ -62,6 +60,8 @@ function do_autosplit() {
 
 		coin=$1
 		komodo_cli=$2
+		utxo_min=$3
+		utxo_max=$4
 		asset=""
 		# setting the split amounts
 		if [ $coin == 'GAME' ] || [ $coin == 'EMC2' ] || [ $coin == 'AYA' ]; then
@@ -126,8 +126,8 @@ function do_autosplit() {
 
 init_colors
 log_print "Starting autosplit ..."
-do_autosplit "KMD" "/usr/local/bin/komodo-cli"
+do_autosplit "KMD" "/usr/local/bin/komodo-cli" 30 40
 for i in "${!coins[@]}"; do # access the keys with ${!array[@]}
 	# key - $i, value - ${coins[$i]}
-	do_autosplit $i ${coins[$i]}
+	do_autosplit $i ${coins[$i]} 10 20
 done
