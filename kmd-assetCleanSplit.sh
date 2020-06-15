@@ -88,7 +88,7 @@ log_print "Starting Split ..."
 #	dosplit $i
 #done
 cd ~/dPoW/iguana
-dosplit "KMD" "" 70 100
+dosplit "KMD" "" 60 80
 cleanwallettransactions "KMD" ""
 ./listassetchains | while read chain; do
 	dosplit $chain "-ac_name=${chain}" 10 20
