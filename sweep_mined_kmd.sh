@@ -45,7 +45,7 @@ if [[ $no_of_utxos -gt 0 ]]; then
     signed_raw_tx=$(${cli} signrawtransaction "${raw_tx}" | jq -r '.hex')
     #txid=$(${cli} sendrawtransaction "$signed_raw_tx")
 
-    echo "${cli} sendrawtransaction $signed_raw_tx"
+    eval "${cli} sendrawtransaction $signed_raw_tx"
 
 #  echo "[${coin}] TXID: ${txid}"
 fi
