@@ -2,9 +2,11 @@
 import os
 import json
 
-script_dir = os.getcwd()
-with open(script_dir + '/assetchains.json') as file:
-        assetchains = json.load(file)
+homeDir = os.path.expanduser("~")
+assetchainsJson = os.path.join(homeDir, "dPoW/iguana/assetchains.json")
 
-        for chain in assetchains:
-                print(chain['ac_name'])
+with open(assetchainsJson) as file:
+    assetchains = json.load(file)
+
+    for chain in assetchains:
+        print(chain['ac_name'])
