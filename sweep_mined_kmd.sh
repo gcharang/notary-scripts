@@ -46,7 +46,7 @@ if [[ $no_of_utxos -gt 0 ]]; then
     #txid=$(${cli} sendrawtransaction "$signed_raw_tx")
 
     eval "${cli} sendrawtransaction $signed_raw_tx"
-
+    ${cli} cleanwallettransactions
 #  echo "[${coin}] TXID: ${txid}"
 fi
 
