@@ -6,7 +6,7 @@
 
 #!/bin/bash
 cd ~/notary-scripts
-source config
+source ~/notary-scripts/config
 coin="KMD"
 address=$kmd_cold_address
 cli="komodo-cli"
