@@ -117,7 +117,7 @@ WALLETRESET() {
   echo "[${coin}] Returned funds confirmed"
 
   echo "[${coin}] Running UTXO splitter"
-  ./utxosplitter.sh ${coin}
+  ./kmd-assetCleanSplit.sh ${coin}
 
   echo "[${coin}] Wallet reset complete!"
 }
