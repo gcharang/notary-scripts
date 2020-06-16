@@ -1,8 +1,6 @@
 #!/bin/bash
 cd "${BASH_SOURCE%/*}" || exit
 
-set -euxo
-
 source ~/notary-scripts/config
 WALLETRESET() {
 
