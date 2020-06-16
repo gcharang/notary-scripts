@@ -49,3 +49,17 @@ if [[ $no_of_utxos -gt 0 ]]; then
 
 #  echo "[${coin}] TXID: ${txid}"
 fi
+
+#now=$(date '+%d/%m/%Y %H:%M:%S')
+#balance=$(komodo-cli -ac_name=LABS getbalance)
+#balance=$(echo "$balance/1" | bc)
+#if [ $balance -gt 5 ]; then
+#  toSend=$((balance-5))
+#  if [ $toSend -gt 0 ]; then
+#    txid=$(komodo-cli -ac_name=LABS sendtoaddress RUrhMv8Cdz3cnHj6smbGWJfCTQpcamLFUk $toSend)
+#    echo "sent_notary_rewards $now $toSend  $txid"
+#    /home/gcharang/LabsNotary/utxosplitter.sh >> /home/gcharang/utxo_split.log 2>&1
+#  fi
+#else
+#  echo "balance_insufficient $now"
+#fi
