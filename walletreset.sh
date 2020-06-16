@@ -1,8 +1,9 @@
 #!/bin/bash
 cd "${BASH_SOURCE%/*}" || exit
 
-source config
+set -euxo
 
+source ~/notary-scripts/config
 WALLETRESET() {
 
   # Coin we're resetting
