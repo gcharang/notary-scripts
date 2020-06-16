@@ -232,9 +232,7 @@ AYA() {
     "${wallet_file}" \
     "${nn_address}"
 }
-HUSH3() {
 
-}
 if [[ ! -z $2 ]]; then
   eval $1 $2
 else
