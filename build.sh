@@ -289,7 +289,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		#gamecreditsd &
 		einsteiniumd &
 		komodod &
-		#hushd &
+		hushd &
 		aryacoind &
 		#~/Marmara-v.1.0/src/komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 &
 	}
@@ -299,7 +299,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 		IGUANA
 		KOMODO
 		AYA
-		#HUSH
+		HUSH
 		CHIPS
 		#GAME
 		EMC2
@@ -343,7 +343,7 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
 			git pull
 			cd iguana
 		else
-			git clone https://github.com/KomodoPlatform/dPoW -b s4
+			git clone https://github.com/KomodoPlatform/dPoW -b master
 			cd dPoW/iguana
 		fi
 
