@@ -9,7 +9,7 @@ date=$(date +'%Y-%m-%d %H:%M:%S')
 echo $date
 NN_ADDRESS=$btc_address # fill your NN address here
 NN_PUBKEY=$pubkey       # fill your pubkey here
-SPLIT_COUNT=250         # 253 total ins and outs is bitcoin-cli max
+SPLIT_COUNT=100         # 253 total ins and outs is bitcoin-cli max
 
 NN_PUBKEY_SHA=$(xxd -r -p <<<"${NN_PUBKEY}" | sha256sum | awk '{print $1}')
 NN_HASH160=$(xxd -r -p <<<"${NN_PUBKEY_SHA}" | openssl rmd160 | cut -c 10-)
