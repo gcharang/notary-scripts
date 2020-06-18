@@ -88,3 +88,6 @@ deb-src http://deb.debian.org/debian buster-updates main contrib non-free
 - disconnect and connect through pubkey auth
 - install git, clone freshubuntu
 - run it
+
+----------------------
+the above setup is misconfigured somehow. the vm thinks all the connections are coming from the host os 
