@@ -20,7 +20,7 @@ declare -A coins
 coins[CHIPS]=$HOME/chips3/src/chips-cli
 #coins[GAME]=$HOME/GameCredits/src/gamecredits-cli
 coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
-coins[HUSH]=$HOME/hush3/src/hush-cli
+coins[HUSH3]=$HOME/hush3/src/hush-cli
 coins[VRSC]=/usr/local/bin/verus
 coins[AYA]=/usr/local/bin/aryacoin-cli
 # declare -A coins=( [BTC]=/usr/local/bin/bitcoin-cli [GAME]=$HOME/GameCredits/src/gamecredits-cli ) # example of one-line array init
