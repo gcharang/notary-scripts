@@ -39,7 +39,7 @@ SPLIT_TOTAL=$(bc <<<"${SPLIT_VALUE}*${SPLIT_COUNT}")
 SPLIT_TOTAL_SATOSHI=$(bc <<<"${SPLIT_VALUE}*${SPLIT_COUNT}*100000000")
 SPLIT_TOTAL_SATOSHI=("$(printf "%.0f" ${SPLIT_TOTAL_SATOSHI})")
 
-if [[ $numNotaUTXOs -gt 300 ]]; then
+if [[ $numNotaUTXOs -gt 150 ]]; then
 	echo "Have: ${numNotaUTXOs} notaUTXOs"
 	echo "*********************************************************"
 	exit 1
