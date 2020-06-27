@@ -18,7 +18,6 @@ iguana_port=7779
 declare -A coins
 
 coins[CHIPS]=$HOME/chips3/src/chips-cli
-#coins[GAME]=$HOME/GameCredits/src/gamecredits-cli
 coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
 coins[HUSH3]=$HOME/hush3/src/hush-cli
 coins[VRSC]=/usr/local/bin/verus
@@ -62,7 +61,7 @@ function do_autosplit() {
 		komodo_cli=$2
 		utxo_min=$3
 		utxo_max=$4
-		asset=""
+		asset=$5
 		# setting the split amounts
 		if [ $coin == 'GAME' ] || [ $coin == 'EMC2' ] || [ $coin == 'AYA' ]; then
 			satoshis=100000
@@ -127,6 +126,7 @@ function do_autosplit() {
 init_colors
 log_print "Starting autosplit ..."
 do_autosplit "KMD" "/usr/local/bin/komodo-cli" 30 40
+do_autosplit "MCL" "/usr/local/bin/komodo-cli" 10 20 "-ac_name=MCL"
 for i in "${!coins[@]}"; do # access the keys with ${!array[@]}
 	# key - $i, value - ${coins[$i]}
 	do_autosplit $i ${coins[$i]} 10 20
