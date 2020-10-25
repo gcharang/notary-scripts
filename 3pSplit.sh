@@ -22,7 +22,7 @@ coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
 #coins[HUSH3]=$HOME/hush3/src/hush-cli
 coins[VRSC]=/usr/local/bin/verus
 coins[AYA]=/usr/local/bin/aryacoin-cli
-coins[GLEEC]=$HOME/hush3/src/gleecbtc-cli
+coins[GLEEC]=$HOME/GleecBTC-FullNode-Win-Mac-Linux/src/gleecbtc-cli
 
 # declare -A coins=( [BTC]=/usr/local/bin/bitcoin-cli [GAME]=$HOME/GameCredits/src/gamecredits-cli ) # example of one-line array init
 
