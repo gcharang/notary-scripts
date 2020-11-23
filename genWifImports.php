@@ -149,6 +149,7 @@ $coins = Array(
    // Array("name" => "GIN", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 198, "cli" => "gincoin-cli"),
     Array("name" => "AYA", "PUBKEY_ADDRESS" => 23, "SECRET_KEY" => 176, "cli" => "aryacoin-cli"),
     Array("name" => "GleecBTC", "PUBKEY_ADDRESS" => 35, "SECRET_KEY" => 65, "cli" => "gleecbtc-cli"),
+    Array("name" => "PBC",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "powerblockcoin-cli"),
 
 );
 
