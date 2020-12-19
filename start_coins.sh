@@ -26,7 +26,7 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
     cp -f ~/dPoW/iguana/pubkey.txt ~/komodo/src/pubkey.txt
     source ~/dPoW/iguana/pubkey.txt
     bitcoind &
-    komodod -gen -genproclimit=2 -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
+    komodod -gen -genproclimit=1 -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     #komodod -notary -pubkey=$pubkey -minrelaytxfee=0.000035 -opretmintxfee=0.004 &
     cd ~/dPoW/iguana
     cp -f assetchains.old ~/komodo/src
