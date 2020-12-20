@@ -8,7 +8,7 @@ else
     IGUANA_STATUS=$(echo "$SERVICE stopped")
 fi
 
-cd $SCRIPT_DIR/discord.sh
+cd $SCRIPT_DIR/discord
 
 IGUANA_WH=$(cat IGUANA_WH)
 

@@ -4,9 +4,9 @@ SCRIPT_DIR="~/notary-scripts"
 
 cd ~/nntools
 
-./stats >$SCRIPT_DIR/discord.sh/temp_stats
+./stats >$SCRIPT_DIR/discord/temp_stats
 
-cd $SCRIPT_DIR/discord.sh
+cd $SCRIPT_DIR/discord
 
 STATS_DATA=$(cat temp_stats)
 
