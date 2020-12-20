@@ -10,6 +10,6 @@ fi
 
 cd $SCRIPT_DIR/discord
 
-IGUANA_WH=$(cat IGUANA_WH)
+IGUANA_WH="$(cat IGUANA_WH)"
 
 ./discord.sh --webhook-url=$IGUANA_WH --text=$IGUANA_STATUS
