@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -euxo pipefail
 
 SERVICE="iguana"
 if pgrep -x "$SERVICE"; then
