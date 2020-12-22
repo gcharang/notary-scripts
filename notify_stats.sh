@@ -6,10 +6,11 @@ cd ~/nntools
 
 ./stats >~/notary-scripts/discord/temp_stats
 tr '@' ' ' <~/notary-scripts/discord/temp_stats >~/notary-scripts/discord/temp_stats_string
+tr '@' ' ' <~/notary-scripts/discord/temp_stats_string >~/notary-scripts/discord/temp_stats
 
 cd ~/notary-scripts/discord
 
-STATS_DATA="$(cat temp_stats_string)"
+STATS_DATA="$(cat temp_stats)"
 
 STATS_WH="$(cat STATS_WH)"
 
