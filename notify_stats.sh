@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 cd ~/nntools
 
 ./stats >~/notary-scripts/discord/temp_stats
