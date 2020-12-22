@@ -13,4 +13,4 @@ cd ~/notary-scripts/discord
 
 IGUANA_WH="$(cat IGUANA_WH)"
 
-./discord.sh --webhook-url=$IGUANA_WH --text=$IGUANA_STATUS
+./discord.sh --webhook-url=$IGUANA_WH --text="$IGUANA_STATUS"
