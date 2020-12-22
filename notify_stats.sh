@@ -5,7 +5,7 @@ set -euxo pipefail
 cd ~/nntools
 
 ./stats >~/notary-scripts/discord/temp_stats
-tr '\n' ' ' <~/notary-scripts/discord/temp_stats >~/notary-scripts/discord/temp_stats_string
+tr '@' ' ' <~/notary-scripts/discord/temp_stats >~/notary-scripts/discord/temp_stats_string
 
 cd ~/notary-scripts/discord
 
