@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 SERVICE="iguana"
 if pgrep -x "$SERVICE"; then
     IGUANA_STATUS=$(echo "$SERVICE is running")
