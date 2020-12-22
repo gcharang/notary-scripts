@@ -1,6 +1,5 @@
 #!/bin/bash
 
-SCRIPT_DIR="~/notary-scripts"
 SERVICE="iguana"
 if pgrep -x "$SERVICE"; then
     IGUANA_STATUS=$(echo "$SERVICE is running")
@@ -8,7 +7,7 @@ else
     IGUANA_STATUS=$(echo "$SERVICE stopped")
 fi
 
-cd $SCRIPT_DIR/discord
+cd ~/notary-scripts/discord
 
 IGUANA_WH="$(cat IGUANA_WH)"
 

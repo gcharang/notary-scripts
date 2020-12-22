@@ -1,12 +1,10 @@
 #!/bin/bash
 
-SCRIPT_DIR="~/notary-scripts"
-
 cd ~/nntools
 
-./stats >$SCRIPT_DIR/discord/temp_stats
+./stats >~/notary-scripts/discord/temp_stats
 
-cd $SCRIPT_DIR/discord
+cd ~/notary-scripts/discord
 
 STATS_DATA="$(cat temp_stats)"
 
