@@ -6,7 +6,7 @@ cd ~/nntools
 
 ./stats >~/notary-scripts/discord/temp_stats
 tr '@' ' ' <~/notary-scripts/discord/temp_stats >~/notary-scripts/discord/temp_stats_string
-tr '@' ' ' <~/notary-scripts/discord/temp_stats_string >~/notary-scripts/discord/temp_stats
+tr '\n' ' ' <~/notary-scripts/discord/temp_stats_string >~/notary-scripts/discord/temp_stats
 
 cd ~/notary-scripts/discord
 
