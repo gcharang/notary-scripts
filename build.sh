@@ -70,6 +70,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
 				bind=127.0.0.1
 				rpcbind=127.0.0.1
 				rpcallowip=127.0.0.1
+				rpcworkqueue=256
 			EOF
 		fi
 		chmod 600 ~/.komodo/komodo.conf
