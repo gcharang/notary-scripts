@@ -138,7 +138,8 @@ $passphrase = $config["passphrase"];
 /* available coins, you can add your own with params from src/chainparams.cpp */
 
 $coins = Array(
-    Array("name" => "BTC",  "PUBKEY_ADDRESS" =>  0, "SECRET_KEY" => 128 , "cli" => "btc-cli"),
+    Array("name" => "BTC",  "PUBKEY_ADDRESS" =>  0, "SECRET_KEY" => 128 , "cli" => "bitcoin-cli"),
+    Array("name" => "LTC",  "PUBKEY_ADDRESS" =>  48, "SECRET_KEY" => 176 , "cli" => "litecoin-cli"),
     Array("name" => "KMD",  "PUBKEY_ADDRESS" => 60, "SECRET_KEY" => 188, "cli" => "komodo-cli"),
     Array("name" => "GAME", "PUBKEY_ADDRESS" => 38, "SECRET_KEY" => 166, "cli" => "gamecredits-cli"),
     Array("name" => "HUSH", "PUBKEY_ADDRESS" => Array(0x1C,0xB8), "SECRET_KEY" => 0x80, "cli" => "hush-cli"),
