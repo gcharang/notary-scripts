@@ -14,16 +14,16 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     tmux new-window -n 'tails'
     tmux select-pane -t 0
     tmux split-window -v -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
-    #tmux select-pane -t 0
-    #tmux split-window -h -t 0 'tmux select-pane -T MCL && tail -f ~/.komodo/MCL/debug.log'
     tmux select-pane -t 0
-    tmux split-window -v -t 0 'tmux select-pane -T GAME && tail -f ~/.gamecredits/debug.log'
+    tmux split-window -v -t 0 'tmux select-pane -T MCL && tail -f ~/.komodo/MCL/debug.log'
+    tmux select-pane -t 0
+    tmux split-window -v -t 0 'tmux select-pane -T GLEECBTC && tail -f ~/.gleecbtc/debug.log'
     tmux select-pane -t 0
     tmux split-window -v -p 25 -t 0 'tmux select-pane -T VRSC && tail -f ~/.komodo/VRSC/debug.log'
     tmux select-pane -t 0
     tmux split-window -v -t 0 'tmux select-pane -T CHIPS && tail -f ~/.chips/debug.log'
     tmux select-pane -t 0
-    tmux split-window -h -t 0 'tmux select-pane -T HUSH && tail -f ~/.komodo/HUSH3/debug.log'
+    tmux split-window -h -t 0 'tmux select-pane -T SFUSD && tail -f ~/.smartusd/debug.log'
     tmux select-pane -t 0
     tmux split-window -h -t 0 'tmux select-pane -T EMC2 && tail -f ~/.einsteinium/debug.log'
     tmux select-pane -t 0
@@ -60,7 +60,7 @@ elif [ "$main" = true ] && [ "$third_party" = false ]; then
     tmux select-pane -t 0
     tmux split-window -v -p 40 -t 0 'tmux select-pane -T KMD && tail -f ~/.komodo/debug.log'
     tmux select-pane -t 0
-    tmux split-window -v -p 70 -t 0 'tmux select-pane -T BTC && tail -f ~/.bitcoin/debug.log'
+    tmux split-window -v -p 70 -t 0 'tmux select-pane -T LTC && tail -f ~/.litecoin/debug.log'
     tmux select-pane -t 0
     #tmux select-layout tiled
 
