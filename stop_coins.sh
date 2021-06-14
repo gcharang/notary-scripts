@@ -20,7 +20,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     komodo-cli -ac_name=VRSC stop
 elif [ "$main" = true ] && [ "$third_party" = false ]; then
     komodo-cli stop
-    bitcoin-cli stop
+    litecoin-cli stop
 
     cd ~/dPoW/iguana
     ./listassetchains | while read chain; do
