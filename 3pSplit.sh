@@ -19,7 +19,6 @@ declare -A coins
 
 coins[CHIPS]=$HOME/chips3/src/chips-cli
 coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
-#coins[HUSH3]=$HOME/hush3/src/hush-cli
 coins[VRSC]=/usr/local/bin/verus
 coins[AYA]=/usr/local/bin/aryacoin-cli
 coins[GLEEC]=$HOME/GleecBTC-FullNode-Win-Mac-Linux/src/gleecbtc-cli

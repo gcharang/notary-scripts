@@ -11,9 +11,10 @@ elif [ "$main" = false ] && [ "$third_party" = false ]; then
     echo 'Please update config to set atleast one of "main" or "third_party" to be true'
 elif [ "$main" = false ] && [ "$third_party" = true ]; then
     komodo-cli stop
-    #hush-cli stop
+    komodo-cli -ac_name=MCL stop
+    smartusd-cli stop
     chips-cli stop
-    #gamecredits-cli stop
+    gleecbtc-cli stop
     einsteinium-cli stop
     aryacoin-cli stop
     komodo-cli -ac_name=VRSC stop
