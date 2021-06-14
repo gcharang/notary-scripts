@@ -5,17 +5,17 @@ cd "${BASH_SOURCE%/*}" || exit
 # e.g "KMD"
 specific_coin=$1
 
-bitcoin_cli="bitcoin-cli"
+litecoin_cli="litecoin-cli"
 chips_cli="chips-cli"
-game_cli="gamecredits-cli"
-hush_cli="hush-cli"
+mcl_cli="komodo-cli -ac_name=MCL"
+gleecbtc_cli="hush-cli"
 einsteinium_cli="einsteinium-cli"
 ayacoin_cli="aryacoin-cli"
 komodo_cli="komodo-cli"
 verus_cli="vrsc-cli"
 
-if [[ -z "${specific_coin}" ]] || [[ "${specific_coin}" = "BTC" ]]; then
-  echo ${bitcoin_cli}
+if [[ -z "${specific_coin}" ]] || [[ "${specific_coin}" = "LTC" ]]; then
+  echo ${litecoin_cli}
 fi
 if [[ -z "${specific_coin}" ]] || [[ "${specific_coin}" = "CHIPS" ]]; then
   echo ${chips_cli}
