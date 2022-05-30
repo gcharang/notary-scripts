@@ -14,7 +14,7 @@ elif [ "$main" = false ] && [ "$third_party" = true ]; then
     ./m_notary_3rdparty
 elif [ "$main" = true ] && [ "$third_party" = false ]; then
     cd ~/dPoW/iguana
-    ./m_notary_KMD
+    /m_notary_LTC
 else
     echo "Please check your config file"
 fi
