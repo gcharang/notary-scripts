@@ -21,8 +21,9 @@ coins[CHIPS]=$HOME/chips3/src/chips-cli
 coins[EMC2]=$HOME/einsteinium/src/einsteinium-cli
 coins[VRSC]=/usr/local/bin/verus
 coins[AYA]=/usr/local/bin/aryacoin-cli
-coins[GLEEC]=$HOME/GleecBTC-FullNode-Win-Mac-Linux/src/gleecbtc-cli
 coins[SFUSD]=$HOME/sfusd-core/src/smartusd-cli
+coins[MIL]=$HOME/mil-1/src/mil-cli
+
 
 # declare -A coins=( [BTC]=/usr/local/bin/bitcoin-cli [GAME]=$HOME/GameCredits/src/gamecredits-cli ) # example of one-line array init
 
@@ -65,7 +66,7 @@ function do_autosplit() {
 		utxo_max=$4
 		asset=$5
 		# setting the split amounts
-		if [ $coin == 'GAME' ] || [ $coin == 'EMC2' ] || [ $coin == 'AYA' ]; then
+		if [ $coin == 'GAME' ] || [ $coin == 'EMC2' ] || [ $coin == 'AYA' ] || [ $coin == 'MIL' ]; then
 			satoshis=100000
 			amount=0.001
 		else
@@ -129,6 +130,7 @@ init_colors
 log_print "Starting autosplit ..."
 do_autosplit "KMD" "/usr/local/bin/komodo-cli" 30 40
 do_autosplit "MCL" "/usr/local/bin/komodo-cli" 10 20 "-ac_name=MCL"
+do_autosplit "TOKEL" "/usr/local/bin/komodo-cli" 10 20 "-ac_name=TOKEL"
 for i in "${!coins[@]}"; do # access the keys with ${!array[@]}
 	# key - $i, value - ${coins[$i]}
 	do_autosplit $i ${coins[$i]} 10 20
