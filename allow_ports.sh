@@ -13,14 +13,14 @@ elif [ "$main" = false ] && [ "$third_party" = false ]; then
 elif [ "$main" = false ] && [ "$third_party" = true ]; then
     readarray -t ufw_3p_commands < <(curl -s https://raw.githubusercontent.com/KomodoPlatform/dPoW/master/iguana/3p_coins.json | jq -r '[.[] | "sudo ufw allow \(.p2p)/tcp comment \"\(.newcoin) p2p port\""] | join("\n")')
     sudo ufw allow 7770/tcp comment "KMD p2p port"
-    sudo ufw allow 13334/tcp comment "iguana 3p port"
+    sudo ufw allow 13344/tcp comment "iguana 3p port"
     for ufw_command in "${ufw_3p_commands[@]}"; do
         eval $ufw_command
     done
 elif [ "$main" = true ] && [ "$third_party" = false ]; then
     readarray -t kmd_coins < <(curl -s https://raw.githubusercontent.com/KomodoPlatform/dPoW/master/iguana/assetchains.json | jq -r '[.[].ac_name] | join("\n")')
     kmd_coins+=(KMD)
-    sudo ufw allow 13337/tcp comment "iguana main server port"
+    sudo ufw allow 13347/tcp comment "iguana main server port"
     for coin in "${kmd_coins[@]}"; do
         if [ "${coin}" != "KMD" ]; then
             p2pport=$(komodo-cli -ac_name=${coin} getinfo 2>/dev/null | jq .p2pport)
